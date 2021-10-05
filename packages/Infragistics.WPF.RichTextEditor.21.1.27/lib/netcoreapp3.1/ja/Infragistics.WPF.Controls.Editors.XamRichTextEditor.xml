@@ -1,0 +1,1899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>Infragistics.WPF.Controls.Editors.XamRichTextEditor</name>
+    </assembly>
+    <members>
+        <member name="T:Infragistics.Controls.Primitives.CustomCursorHelper">
+            <summary>DataTemplate または Cursor を使用して特定の要素のカスタム Cursor の表示を制御するヘルパー クラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Primitives.CustomCursorHelper.HideTemplate">
+            <summary>データ テンプレートを使用するとカーソルが非表示に強制されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Primitives.CustomCursorHelper.Initialize(System.Windows.Input.Cursor,System.Windows.DataTemplate,System.Windows.Input.Cursor)">
+            <summary>アトミック操作の指定した値でカーソルの状態を変更します。</summary>
+            <param name="customCursor">新しいカーソルまたは null。</param>
+            <param name="cursorTemplate">新しいカスタム テンプレートまたは null。</param>
+            <param name="fallbackCursor">フィードバック/デフォルト カーソル</param>
+            <returns>カーソル ソースが変更されている場合 true を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Primitives.CustomCursorHelper.ShowTemplate">
+            <summary>カスタム カーソル テンプレートを使用する場合の要素を表示するためのカーソルを強制するために使用されます。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Primitives.CustomCursorHelper.CursorTemplate">
+            <summary>カスタム カーソルの DataTemplate。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Primitives.CustomCursorHelper.CustomCursor">
+            <summary>関連する要素に望ましいカーソルを返すか、設定します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Primitives.CustomCursorHelper.FallbackCursor">
+            <summary>最後のリゾートとして使用されるカーソル。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Primitives.CustomCursorHelper.HorizontalOffset">
+            <summary><see cref="P:Infragistics.Controls.Primitives.CustomCursorHelper.CursorTemplate" /> の水平オフセットを返すか、設定します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Primitives.CustomCursorHelper.VerticalOffset">
+            <summary><see cref="P:Infragistics.Controls.Primitives.CustomCursorHelper.CursorTemplate" /> の垂直オフセットを返すか、設定します。</summary>
+        </member>
+        <member name="E:Infragistics.Windows.Ime.ImeEditorHelperState.PropertyChanged">
+          <summary>このオブジェクトのプロパティが変化すると発生するイベント。</summary>
+        </member>
+        <member name="T:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> のタイプを UI オートメーションに公開します。</summary>
+        </member>
+        <member name="M:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer.#ctor(Infragistics.Controls.Editors.XamRichTextEditor)">
+            <summary>新しい <see cref="T:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer" /> を初期化します。</summary>
+            <param name="owner">ピアが表す <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" />。</param>
+        </member>
+        <member name="M:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer.GetAutomationControlTypeCore">
+            <summary>オートメーション ピアによって表されるコントロールのタイプを示す列挙体を返します。</summary>
+            <returns><b>Custom</b> 列挙値</returns>
+        </member>
+        <member name="M:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer.GetClassNameCore">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> の名前を返します。</summary>
+            <returns>&apos;XamSyntaxEditor&apos; を含む文字列。</returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichTextEditorCommand">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> に関連付けられたすべてのコマンドのクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichTextEditorCommand.#ctor(Infragistics.Controls.Editors.RichTextEditorCommandType)">
+            <summary>コンストラクター</summary>
+            <param name="commandType"></param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichTextEditorCommand.CanExecute(System.Object)">
+            <summary>入力されたオブジェクトでコマンドを実行する可能性があるかどうかを示します。</summary>
+            <param name="parameter">コマンドを実行するオブジェクト。</param>
+            <returns>オブジェクトがこのコマンドをサポートできる場合は true です。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichTextEditorCommand.Execute(System.Object)">
+            <summary>コマンドを実行します。</summary>
+            <param name="parameter">実行される <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> オブジェクト。</param>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichTextEditorCommandSource">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> オブジェクトのコマンド ソース オブジェクト。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichTextEditorCommandSource.ResolveCommand">
+            <summary>コマンドを実行する <see cref="T:System.Windows.Input.ICommand" /> オブジェクトを作成します。</summary>
+            <returns></returns>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichTextEditorCommandSource.CommandType">
+            <summary>コマンドによって実行される RichTextEditorCommand を取得または設定します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase">
+            <summary>すべての装飾プロバイダーの抽象基本クラス。</summary>
+            <remarks>
+            <para class="body">装飾ジェネレーターは、<see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> 内の特定の <see cref="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.AdornmentLayer" /> のアドーナーを提供します。</para>
+            </remarks>
+            <seealso cref="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.AdornmentLayer" />
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" />
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentGeneratorProvider" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.#ctor(Infragistics.Controls.Editors.RichDocumentView,Infragistics.Controls.Editors.AdornmentLayerInfo)">
+            <summary>コンストラクター</summary>
+            <param name="documentView">この <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> に関連づけられた <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /></param>
+            <param name="layerInfo">この <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> が作成する装飾のホスティングをする <see cref="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.AdornmentLayer" /> を識別する <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" />。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.OnRefreshAdornments">
+            <summary>(装飾の表示に影響を与える可能性のある) <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内の設定を変更したときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.OnTextAreaInitialized">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> が初期化されたときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.OnUnloaded">
+            <summary>ジェネレーターをアンロードするときに呼び出します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.AdornmentLayer">
+            <summary>この <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> が装飾を提供している <see cref="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.AdornmentLayer" /> を返します (読み取り専用)。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.DocumentView">
+            <summary>この <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> に関連付けられた <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します (読み取り専用)。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase.RichTextEditor">
+            <summary>この <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> をホスティングしている <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> を返します (読み取り専用)。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.AdornmentGeneratorProvider">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> 派生タイプのインスタンスを作成するファクトリ クラス。</summary>
+            <remarks>
+            <para class="body">コンストラクターで渡す、作成した <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> 派生タイプ。</para>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.AdornmentGeneratorProvider.#ctor">
+            <summary>コンストラクター</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.AdornmentGeneratorProvider.CreateAdornmentGenerator(Infragistics.Controls.Editors.RichDocumentView)">
+            <summary>指定した <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> の <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+            <param name="documentView"><see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> を作成する <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+            <returns><see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> インスタンス。</returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.AdornmentInfo">
+            <summary>装飾に関連するデータを保持するクラス。<see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> に追加される装飾。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentInfo.Element">
+            <summary>装飾に関連付けられた要素を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentInfo.PixelLocation">
+            <summary>関連装飾 <see cref="P:Infragistics.Controls.Editors.AdornmentInfo.Element" /> のピクセル位置を示す (テキスト領域座標の) Point を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentInfo.UserData">
+            <summary>修飾と関連付ける任意データを収容したオブジェクトを返すか、設定します。</summary>
+        </member>
+        <member name="E:Infragistics.Controls.Editors.AdornmentInfo.PropertyChanged">
+            <summary>プロパティ値を変更したときに発生します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.AdornmentLayerInfo">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の作成に必要なデータを提供します。</summary>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" />
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentLayerKeys" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.AdornmentLayerInfo.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>コンストラクター</summary>
+            <param name="key">この <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> から作成した <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> に割り当てられた文字列識別子。</param>
+            <param name="beforeKeys">現在の <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> をその前にソートすべき <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を表す文字列キーの配列。</param>
+            <param name="afterKeys">現在の <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> をその後にソートすべき <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を表す文字列キーの配列。</param>
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentLayerKeys" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.BackgroundContent">
+            <summary>&apos;BackgroundContent&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を作成するための <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.Selection">
+            <summary>&apos;Selection&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の作成に使用する <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.SpellingError">
+            <summary>&apos;SpellingError&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を作成するための <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.MiddleContent">
+            <summary>&apos;MiddleContent&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を作成するための <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.ForegroundContent">
+            <summary>&apos;ForegroundContent &apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を作成するための <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.Caret">
+            <summary>&apos;Caret&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の作成に使用する <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.EditGlyphs">
+            <summary>&apos;EditGlyphs&apos; <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を作成するために使用される <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を返します。(静的、読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.After">
+            <summary>現在の項目の後の並べ替える項目を表す文字列キーの配列。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.Before">
+            <summary>現在の項目の前の並べ替える項目を表す文字列キーの配列。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.AdornmentLayerInfo.Key">
+            <summary>現在の項目の文字列キー。このキーは、他の項目の <see cref="P:Infragistics.Controls.Editors.AdornmentLayerInfo.Before" /> リストと <see cref="P:Infragistics.Controls.Editors.AdornmentLayerInfo.After" /> リストで参照します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.AdornmentLayerKeys">
+            <summary>組み込み <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> が使用する位置決めキーを公開するクラス。</summary>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" />
+            <seealso cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.BackgroundContentLayer">
+            <summary><see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するための背景コンテンツ レイヤーによって使用される定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.SelectionLayer">
+            <summary>選択レイヤーがその <see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するために使用する定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.SpellingErrorLayer">
+            <summary><see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するためのスペル エラー レイヤーによって使用される定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.MiddleContentLayer">
+            <summary><see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するための中央コンテンツ レイヤーによって使用される定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.ForegroundContentLayer">
+            <summary><see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するための前景コンテンツ レイヤーによって使用される定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.CaretLayer">
+            <summary>キャレット レイヤーがその <see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するために使用する定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.AdornmentLayerKeys.EditGlyphsLayer">
+            <summary>キャレット レイヤーがその <see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するために使用する定数。</summary>
+            <para class="body">カスタム <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を作成するときは、組み込み <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.CaretAdornmentGenerator.OnRefreshAdornments">
+            <summary>(装飾の表示に影響を与える可能性のある) <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内の設定を変更したときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.CaretAdornmentGenerator.OnTextAreaInitialized">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea">RichDocumentViewTextArea</see> が初期化されたときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.CaretAdornmentGenerator.OnUnloaded">
+            <summary>ジェネレーターをアンロードするときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.EditGlyphsAdornmentGenerator.OnRefreshAdornments">
+            <summary>(装飾の表示に影響を与える可能性のある) <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内の設定を変更したときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.EditGlyphsAdornmentGenerator.OnTextAreaInitialized">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea">RichDocumentViewTextArea</see> が初期化されたときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.EditGlyphsAdornmentGenerator.OnUnloaded">
+            <summary>ジェネレーターをアンロードするときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.SelectionAdornmentGenerator.OnRefreshAdornments">
+            <summary>(装飾の表示に影響を与える可能性のある) <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内の設定を変更したときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.SelectionAdornmentGenerator.OnTextAreaInitialized">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea">RichDocumentViewTextArea</see> が初期化されたときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.SelectionAdornmentGenerator.OnUnloaded">
+            <summary>ジェネレーターをアンロードするときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.SelectionAdornmentGeneratorProvider.CreateAdornmentGenerator(Infragistics.Controls.Editors.RichDocumentView)">
+            <summary>指定した <see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> の <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+            <param name="documentView"><see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> を作成する <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+            <returns><see cref="T:Infragistics.Controls.Editors.RichTextAdornmentGeneratorBase" /> インスタンス。</returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Caret">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> 内の挿入点を表します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Caret.SetDocumentOffset(System.Int32)">
+          <summary>
+            Caret が論理的に配置される <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> 内のオフセットを設定します。Caret の表示位置も変更されます。
+          </summary>
+          <param name="documentOffset">
+            Caret を配置する <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> 内のオフセット。
+          </param>
+          <seealso cref="P:Infragistics.Controls.Editors.Caret.DocumentOffset" />
+          <seealso cref="P:Infragistics.Controls.Editors.Caret.PixelLocation" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.Brush">
+            <summary>キャレットの描画に使用するブラシを返します(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.DocumentOffset">
+            <summary>現在アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> と関連付けられた <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> のカレットのバージョン オフセットを返します。(読み取り専用)</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Caret.PixelLocation" />
+            <seealso cref="M:Infragistics.Controls.Editors.Caret.SetDocumentOffset(System.Int32)"/>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.Height">
+            <summary>キャレットの高さ (ピクセル単位) を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.IsVisible">
+            <summary>キャレットが可視の場合 true を返します。(読み取り専用)</summary>
+            <para class="note"><b>注:</b> キャレットはアクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> にのみ表示されないため、格納している <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> がアクティブでなければ、このプロパティは必ず false を返します。</para>
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.IsActive" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.PixelLocation">
+            <summary>カレットの左角上を表す Point (テキスト領域座標) を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Caret.Width">
+            <summary>キャレットの幅 (ピクセル単位) を返します。(読み取り専用)</summary>
+        </member>
+        <member name="E:Infragistics.Controls.Editors.Caret.PropertyChanged">
+            <summary>このオブジェクトのプロパティが変化すると発生するイベント。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.EditorUndoTransaction">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 操作のカスタム元に戻す/やり直すトランザクション。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.EditorUndoTransaction.CreateExecuteTransaction(Infragistics.Undo.UndoExecuteContext)">
+            <summary>トランザクションを作成します</summary>
+            <param name="executeInfo">必要なコンテキスト。</param>
+            <returns>トランザクション。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.EditorUndoTransaction.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>いくつかのアクションが取られた場合は true を返します。それ以外は false を返します。いずれの場合も、オブジェクトは元に戻すスタックから削除されました。</returns>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.EditorUndoTransaction.Target">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit" /> によって影響を受けるターゲット オブジェクトを返します</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.MarginBase">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> マージンの実装を提供するクラスを作成するための抽象基本クラス。</summary>
+            <remarks>
+            <para class="body">これは、すべてのマージンのベース クラスです。</para>
+            </remarks>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+            <seealso cref="T:Infragistics.Controls.Editors.MarginKeys" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.MarginBase.#ctor">
+            <summary>コンストラクター</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.MarginBase.CreatePresenter(Infragistics.Controls.Editors.RichDocumentView)">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> 内の Margin を表す要素のインスタンスを返します。</summary>
+            <param name="documentView">Margin プレゼンターを作成する <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+            <returns>UI 内の Margin を表す FrameworkElement 派生クラスのインスタンス。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.MarginBase.OnPresenterDiscarded(System.Windows.FrameworkElement)">
+            <summary>割り当てられたリソースをクリーンアップするために、マージンの関連するプレゼンター要素が破棄されるときに呼び出されます。</summary>
+            <param name="discardedPresenter">破棄されるマージンのプレゼンター要素。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.MarginBase.Location">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> 内の Margin の場所を返します (読み取り専用)。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewMarginLocation" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.MarginBase.After">
+            <summary>現在の項目の後の並べ替える項目を表す文字列キーの配列。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.MarginBase.Before">
+            <summary>現在の項目の前の並べ替える項目を表す文字列キーの配列。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.MarginBase.Key">
+            <summary>現在の項目の文字列キー。このキーは、他の項目の <see cref="P:Infragistics.Controls.Editors.MarginBase.Before" /> リストと <see cref="P:Infragistics.Controls.Editors.MarginBase.After" /> リストで参照します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.MarginKeys">
+            <summary>組み込み Margin が使用する位置決めキーを公開するクラス。</summary>
+            <para class="note"><b>注:</b> 他のマージンの &apos;前に&apos; 配置されるマージンは、(<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの Margin の実装により) テキスト エリア近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.MarginKeys.HorizontalRulerMargin">
+            <summary><see cref="F:Infragistics.Controls.Editors.MarginKeys.HorizontalRulerMargin" /> がその <see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するときに使用する定数。</summary>
+            <para class="body">カスタム Margin を作成するときは、組み込み Margin を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> 他のマージンの &apos;前に&apos; 配置されるマージンは、(<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの Margin の実装により) テキスト エリア近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.MarginKeys.VerticalRulerMargin">
+            <summary><see cref="F:Infragistics.Controls.Editors.MarginKeys.VerticalRulerMargin" /> がその <see cref="P:Infragistics.ISupportPositioning.Key" /> を指定するときに使用する定数。</summary>
+            <para class="body">カスタム Margin を作成するときは、組み込み Margin を基準にした希望位置にそれを配置する &apos;前&apos; キーと &apos;後&apos; キーのセットを選択します (<see cref="T:Infragistics.ISupportPositioning" /> 参照)。</para>
+            <para class="note"><b>注:</b> 他のマージンの &apos;前に&apos; 配置されるマージンは、(<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの Margin の実装により) テキスト エリア近くに配置します。</para>
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentView">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内で編集中のドキュメントにビューを表示するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.Activate">
+            <summary>この <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> をアクティブ ビューに設定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnDocumentChanged(Infragistics.Documents.RichText.RichTextDocument,Infragistics.Documents.RichText.RichTextDocument)">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" /> プロパティを変更すると呼び出します</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnLoaded">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> が読み込まれるときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnMouseLeftControl">
+          <summary>
+            <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> コントロールからマウス ポインターを離したたときに呼び出されます。
+          </summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnUnloaded">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> をアンロードするときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.RefreshLayerLayout(Infragistics.Controls.Editors.AdornmentLayerInfo)">
+            <summary>指定した <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> に説明した <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> のレイアウトを更新します。</summary>
+            <param name="layerInfo">そのレイアウトが更新する <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> を説明する <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" />。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.RefreshLayersLayout">
+            <summary>この <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> と関連付けるすべての <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> のレイアウトを更新します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnActivated">
+            <summary><see cref="E:Infragistics.Controls.Editors.RichDocumentView.Activated" /> イベントを呼び出します。</summary>
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnDeactivated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Activated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Deactivated" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnDeactivated">
+            <summary><see cref="E:Infragistics.Controls.Editors.RichDocumentView.Deactivated" /> イベントを呼び出します。</summary>
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnActivated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Activated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Deactivated" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnLayoutChanged(Infragistics.Controls.Editors.RichDocumentViewLayoutChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.RichDocumentView.LayoutChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.LayoutChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLayoutChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnSelectionChanged(Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.RichDocumentView.SelectionChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.SelectionChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnFocusReceived">
+            <summary>ビューがフォーカスを受けるときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.OnFocusLost">
+            <summary>ビューがフォーカスを失うときに呼び出されます。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.Document">
+            <summary>ビューに関連付けられた <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.HorizontalViewOffset">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のゼロから始まる水平ピクセル オフセットを返すか、設定します。</summary>
+            <remarks>このプロパティから公開される値は既に正の値です。負の数に設定されようとすると、プロパティがその代わりに 0 に設定されます。最大値は、表示で最も長い行の長さおよびテキスト領域の幅に基づいて設定されます。</remarks>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.IsActive">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> が現在のアクティブ ビューであるかどうかを返します。(読み取り専用)。</summary>
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnActivated" />
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnDeactivated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Activated" />
+            <seealso cref="E:Infragistics.Controls.Editors.RichDocumentView.Deactivated" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.HorizontalScrollBarVisibility">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の水平方向のスクロールバーの表示状態を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.LayoutStyle">
+            <summary><see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> のコンテンツが <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の編集領域に配置される方法を指定する値をを返すか、設定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLayoutStyle" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.RichTextEditor">
+            <summary>ビューに関連付けられた <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.Selection">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> に関連付けられた <see cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" /> を返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+            <seealso cref="T:Infragistics.Documents.RichText.Range" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.VerticalScrollBarVisibility">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の垂直方向のスクロールバーの表示状態を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.VerticalViewOffset">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のゼロから始まる水平ピクセル オフセットを返すか、設定します。</summary>
+            <remarks>このプロパティから公開される値は既に正の値です。負の数に設定されようとすると、プロパティがその代わりに 0 に設定されます。最大値は、すべての <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> の計算済みの描画の高さに基づきます。</remarks>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> コントロール内の現在の <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の位置を示す <see cref="T:Infragistics.Controls.Editors.RichDocumentViewLocation" /> 列挙を返します。(読み取り専用)。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLocation" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.RichDocumentView.Activated">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を起動すると発生します。</summary>
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnActivated" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.RichDocumentView.Deactivated">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を停止すると発生します。</summary>
+            <seealso cref="M:Infragistics.Controls.Editors.RichDocumentView.OnActivated" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.RichDocumentView.LayoutChanged">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のラインのレイアウト変更後に発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLayoutChangedEventArgs" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.RichDocumentView.SelectionChanged">
+            <summary><see cref="T:Infragistics.Documents.RichText.Selection" /> がビューで変更されたときに発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.RichDocumentView.PropertyChanged">
+            <summary>このオブジェクトのプロパティが変化すると発生するイベント。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey.GetHashCode">
+            <summary>構造のハッシュ コードを返します。</summary>
+            <returns>このインスタンスのハッシュ コード。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey.Equals(System.Object)">
+            <summary>指定されたオブジェクトとこのオブジェクトが等しいかを比較します。</summary>
+            <param name="obj">比較するオブジェクト</param>
+            <returns>オブジェクトが等しい場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey.op_Equality(Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey,Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey)">
+            <summary>2 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey" /> 構造の値を比較して一致するかどうか調べます。</summary>
+            <param name="item1">1 つの構造</param>
+            <param name="item2">他の構造</param>
+            <returns>2 つのインスタンスが等しい場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey.op_Inequality(Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey,Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey)">
+            <summary>2 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView.CaretLayoutInfoCacheKey" /> 構造の値が等しいか比較します。</summary>
+            <param name="item1">1 つの構造</param>
+            <param name="item2">他の構造</param>
+            <returns>2 つのインスタンスが等しくない場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの特別レベルにある装飾を管理し、配置するパネル。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Primitives.AdornmentLayer.AdornmentLayerInfo" />
+            <seealso cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.AdornmentLayer.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.AdornmentLayer.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.AdornmentLayer.AddAdornment(System.Windows.UIElement,System.Windows.Point,System.Object)">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> に装飾を追加します。</summary>
+            <param name="adornmentElement">装飾を表す要素。</param>
+            <param name="adornmentLocation">装飾を位置決めする<see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> 内の位置 (テキスト領域座標)。</param>
+            <param name="userData">装飾と保存する任意のデータ ピース。</param>
+            <returns>装飾を表す <see cref="T:Infragistics.Controls.Editors.AdornmentInfo" /> インスタンス。</returns>
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentInfo" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.AdornmentLayer.RemoveAdornment(Infragistics.Controls.Editors.AdornmentInfo)">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> から装飾を削除します。</summary>
+            <param name="adornmentInfo">削除する装飾に関連付けられた <see cref="T:Infragistics.Controls.Editors.AdornmentInfo" />。</param>
+            <returns>指定した <see cref="T:Infragistics.Controls.Editors.AdornmentInfo" /> で表した装飾が見つかって削除したときは true。それ以外は false。</returns>
+            <seealso cref="T:Infragistics.Controls.Editors.AdornmentInfo" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.AdornmentLayer.DocumentView">
+            <summary>現在の <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> が所属する <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.AdornmentLayer.Key">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> に割り当てられる 。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Primitives.AdornmentLayer.AdornmentLayerInfo" />
+            <seealso cref="T:Infragistics.ISupportPositioning" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ContentAdornmentLayerBase.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ContentAdornmentLayerBase.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.BorderRenderingSurface.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.BorderRenderingSurface.OnRender(System.Windows.Media.DrawingContext)">
+            <summary>要素を描画するときに呼び出されます。</summary>
+            <param name="drawingContext">このメソッド内ですべての描画のために使用される初期化された DrawingContext。</param>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichTextCaretPresenter">
+            <summary>編集キャレットを表すオブジェクト。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Primitives.RichTextCaretPresenter.Caret" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichTextCaretPresenter.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichTextCaretPresenter.Caret">
+            <summary>現在のキャレット プレゼンターに関連付けられたキャレットを返します。(読み取り専用)</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Primitives.RichTextCaretPresenter.Caret" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ContentElementClippingHost.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ContentElementClippingHost.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.HyperlinkToolTipPresenter">
+            <summary>ハイパーリンク ツールチップのコンテンツを表す要素。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.HyperlinkToolTipPresenter.ToolTipPrompt">
+            <summary>この HyperlinkToolTipPresenter と関連付けられるツールチップを返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.HyperlinkToolTipPresenter.ToolTipText">
+            <summary>この HyperlinkToolTipPresenter と関連付けられるツールチップ テキストを返します。(読み取り専用)</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ImageContainer.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.ImageContainer.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Infragistics.Controls.Primitives.LayoutTransformer">
+            <summary>レイアウトの変換をその Content に適用するコントロールを表します。</summary>
+            <QualityBand>プレビュー</QualityBand>
+        </member>
+        <member name="M:Infragistics.Controls.Primitives.LayoutTransformer.#ctor">
+            <summary>LayoutTransformer クラスの新しいインスタンスを初期化します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewLayoutPanel">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内部の <see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter" /> を配置するコントロール。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewLayoutPanel.#ctor">
+            <summary>コンストラクター</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewLayoutPanel.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewLayoutPanel.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel">
+            <summary><see cref="T:Infragistics.Controls.Editors.MarginBase" /> インスタンスの配置に使用するパネル</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.#ctor">
+            <summary>コンストラクター。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.LocationProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.Location" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.Location">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel" /> の場所を返すか、設定します。デフォルトは Left です。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewMarginPanel.LocationProperty" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewMarginLocation" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewMiniSplitter">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内部で使用してそこにある <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のサイズを制御するスプリッター。</summary>
+            <remarks>
+            </remarks>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewMiniSplitter.#ctor">
+            <summary>RichDocumentViewMiniSplitter のインスタンスを作成します。内部使用のみ。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewMiniSplitter.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter">
+            <summary>UI 内の <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を表す要素。</summary>
+            <para class="body"><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> は、1 つまたは 2 つの編集領域を表示できます。これらの領域は編集中のドキュメントで個別にスクロールできるビューです。各編集領域の後ろには <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> があり、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter" /> で UI に表示されます。</para>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLocation" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnGotFocus(System.Windows.RoutedEventArgs)">
+            <summary>要素がフォーカスを受け取ったときに呼び出します。</summary>
+            <param name="e">イベントに関する情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>キーを押したときに呼び出されます。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnKeyUp(System.Windows.Input.KeyEventArgs)">
+            <summary>キーを離したときに呼び出されます。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnLostFocus(System.Windows.RoutedEventArgs)">
+            <summary>要素がフォーカスを失ったときに呼び出されます。</summary>
+            <param name="e">イベントに関する情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>マウスが要素に入ったときに呼び出されます。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>マウスが要素から離れたときに呼び出します。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>マウスの左ボタンが押されたときに呼び出します。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>マウスの左ボタンが放されたときに呼び出します。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseRightButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>マウスの右ボタンを押したときに呼び出します。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseRightButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>マウスの右ボタンがリリースされたときに呼び出されます。</summary>
+            <param name="e">イベントについての情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+            <summary>マウスが移動したときに呼び出します。</summary>
+            <param name="e">イベントに関する情報。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnMouseWheel(System.Windows.Input.MouseWheelEventArgs)">
+            <summary>マウス ホイールをスクロールしたときに呼び出されます。</summary>
+            <param name="e">このイベントに関する情報を提供します。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.OnTextInput(System.Windows.Input.TextCompositionEventArgs)">
+            <summary>System.Windows.UIElement.LostFocus イベントを発生する前に呼び出します。</summary>
+            <param name="e">イベント データを格納した System.Windows.Input.TextCompositionEventArgs。</param>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.ScrollbarIntersectionBrushProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.ScrollbarIntersectionBrush" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.ScrollbarIntersectionBrush">
+            <summary>水平と垂直スクロールバーが交差する領域を塗りつぶすために使用されるブラシを返すか、設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewPresenter.ScrollbarIntersectionBrushProperty" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> 内のスクロールバー領域を表す要素。</summary>
+            <remarks>
+            <para class="body">この要素にはスクロールバーとミニスプリッターがあります。</para>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.#ctor">
+            <summary>RichDocumentViewScrollBarArea のインスタンスを作成します。内部使用のみ。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.OrientationProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.Orientation" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.ScrollBarVisibilityProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.ScrollBarVisibility" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.Orientation">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea" /> の方向を返すか、設定します。デフォルトは Vertical です。</summary>
+            <remarks>
+            <para class="body"><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea" /> にはスクロールバーとミニスプリッターがあります。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.OrientationProperty" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.ScrollBarVisibility">
+            <summary>含まれているスクロール バーの表示状態を返します。(読み取り専用)</summary>
+            <remarks>
+            <para class="body"><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea" /> にはスクロールバーとミニスプリッターがあります。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewScrollBarArea.ScrollBarVisibilityProperty" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> 内部で使用してそこにある <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のサイズを制御するスプリッター。</summary>
+            <remarks>
+            <para class="body"><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.Orientation" /> プロパティは、スプリッターが水平分割または垂直分割を制御しているかどうかを決定します。</para>
+            </remarks>
+            <seealso cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.Orientation" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.OrientationProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.Orientation" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.Orientation">
+            <summary><see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter" /> で作成する分割の種類を表す Orientation 値を返すか、設定します。デフォルトは Vertical です。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.Primitives.RichDocumentViewSplitter.OrientationProperty" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea">
+            <summary>その <see cref="T:Infragistics.ISupportPositioning" /> の実装により、関連付けられた <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> で公開された位置決め情報に基づいて <see cref="T:Infragistics.Controls.Editors.AdornmentLayerInfo" /> を配置する要素。</summary>
+            <para class="note"><b>注:</b> (<see cref="T:Infragistics.ISupportPositioning" /> インターフェイスの <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> の実装で決定した) 他のレイヤーの &apos;前に&apos; ある <see cref="T:Infragistics.Controls.Editors.Primitives.AdornmentLayer" /> は、<see cref="T:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea" /> 内の装飾レイヤー スタックの一番下近くに配置します。</para>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Primitives.RichDocumentViewTextArea.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.HiddenSymbolDisplayMode">
+            <summary>段落記号と他の非表示記号を表示するオプション指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.HiddenSymbolDisplayMode.DoNotDisplay">
+            <summary>非表示記号の非表示を指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.HiddenSymbolDisplayMode.DisplayAllHiddenSymbols">
+            <summary>すべての非表示記号の表示を指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentViewLayoutStyle">
+            <summary><see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> のコンテンツを <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> コントロールの編集領域に配置する方法を指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewLayoutStyle.WebLayout">
+            <summary>ウェブ ページで表示されるように <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> を表示します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.LayoutStyle" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentViewLocation">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> コントロールの編集領域内の <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の場所を指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewLocation.Center">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> は <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> が表示する唯一のビューであり、コントロールの全編集領域を占有します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewLocation.Upper">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> は水平分割がある <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> の上側ビューであるか、垂直分割のある <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> の左側ビューであることを指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewLocation.Lower">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> は水平分割がある <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> の下側ビューであるか、垂直分割のある <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> の右側ビューであることを指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.ViewLocation" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentViewMarginLocation">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> 内の <see cref="T:Infragistics.Controls.Editors.MarginBase" /> の場所を指定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.MarginBase.Location" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewMarginLocation.Left">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の左側の <see cref="T:Infragistics.Controls.Editors.MarginBase" /> の位置を指定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.MarginBase.Location" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewMarginLocation.Top">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の上の <see cref="T:Infragistics.Controls.Editors.MarginBase" /> の位置を指定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.MarginBase.Location" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewMarginLocation.Right">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の右側の <see cref="T:Infragistics.Controls.Editors.MarginBase" /> の位置を指定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.MarginBase.Location" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewMarginLocation.Bottom">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> の下の <see cref="T:Infragistics.Controls.Editors.MarginBase" /> の位置を指定します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.MarginBase.Location" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentViewTextUpdateMode">
+            <summary><see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> にいかに新しいテキストを適用するかを指定します。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewTextUpdateMode.Insert">
+            <summary>現在のカーソル位置に新しいテキストを挿入することを指定します。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichDocumentViewTextUpdateMode.Overwrite">
+            <summary>現在のカーソル位置のテキストを新しいテキストで上書きすることを指定します。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateMode" />
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichTextEditorCommandType">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> コントロールの使用可能なコマンドの列挙体。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Cut">
+            <summary>現在選択しているテキストをクリップボードに切り取ります。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Copy" />
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Paste" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Copy">
+            <summary>現在選択しているテキストをクリップボードにコピーします。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Cut" />
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Paste" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Paste">
+            <summary>現在のクリップボードのテキストを現在の挿入位置に貼り付けます。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Cut" />
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Copy" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Undo">
+            <summary>前回の編集アクティビティを取り消します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Redo" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Redo">
+            <summary>前回の編集アクティビティをやり直します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Undo" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SplitEditArea">
+            <summary>編集領域を上下に分けて、コントロールの編集領域に、水平スプリッターで区切られた 2 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を作成します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveSplitFromEditArea">
+            <summary>編集領域から分割を削除します。1 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> でコントロールの全編集領域を占有します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.AllowEditAreaSplitting">
+            <summary>これで編集領域を左右に分けて、コントロールの編集領域に垂直スプリッターで区切られた 2 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を作成するミニスプリッターを表示します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DoNotAllowEditAreaSplitting">
+            <summary>編集領域を複数のビューに分割できるミニスプリッターは表示しません。いつも 1 つの <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> がコントロールの編集領域全体を占有します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DisplayHiddenSymbols">
+            <summary>段落記号とその他の非表示書式記号を表示します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.HideHiddenSymbols">
+            <summary>段落記号とその他の非表示書式記号を表示します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.GrowFont">
+            <summary>フォント サイズを大きくします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ShrinkFont">
+            <summary>フォント サイズを小さくします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.IncreaseIndentLevel">
+            <summary>段落のインデント レベルを増加させます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DecreaseIndentLevel">
+            <summary>段落のインデント レベルを減少させます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.IncreaseListIndentLevel">
+          <summary>選択の開始を含むリストのインデントを増加します。選択の開始がリストに配置されない場合、操作を実行しません。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DecreaseListIndentLevel">
+          <summary>選択の開始を含むリストのインデントを減らします。選択の開始がリストに配置されない場合、操作を実行しません。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.IncreaseParagraphOrListIndentLevel">
+          <summary>
+            選択の開始はリストの最初の段落に含まれていない場合、このコマンドは <see cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.IncreaseIndentLevel"/> コマンドと同じ操作を実行します。選択の開始はリストの最初の段落に含まれている場合、このコマンドは <see cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.IncreaseListIndentLevel"/> コマンドと同じ操作を実行します。
+          </summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DecreaseParagraphOrListIndentLevel">
+          <summary>
+            選択の開始はリストの最初の段落に含まれていない場合、このコマンドは <see cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DecreaseIndentLevel"/> コマンドと同じ操作を実行します。選択の開始はリストの最初の段落に含まれている場合、このコマンドは <see cref="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DecreaseListIndentLevel"/> コマンドと同じ操作を実行します。
+          </summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ApplyBoldFormatting">
+            <summary>選択テキストに太字書式を追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveBoldFormatting">
+            <summary>選択テキストから太字書式を削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleBoldFormatting">
+            <summary>選択テキストで太字書式を切り替えます。選択テキストに太字と太字以外の書式を含む場合、太字書式をすべての選択テキストから削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ApplyItalicFormatting">
+            <summary>イタリック書式を選択テキストに追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveItalicFormatting">
+            <summary>選択テキストからイタリック書式を削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleItalicFormatting">
+            <summary>選択テキストでイタリック書式を切り替えます。選択テキストにイタリックとイタリック以外の書式を含む場合、イタリック書式をすべての選択テキストから削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ApplySingleStrikethroughFormatting">
+            <summary>取り消し線書式を選択テキストに追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ApplyDoubleStrikethroughFormatting">
+            <summary>二重取り消し線書式を選択テキストに追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveStrikethroughFormatting">
+            <summary>選択テキストから取り消し線書式を削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveSingleStrikethroughFormatting">
+            <summary>選択テキストから取り消し線書式を削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.RemoveDoubleStrikethroughFormatting">
+            <summary>選択テキストから二重取り消し線書式を削除します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleSingleStrikethroughFormatting">
+            <summary>選択テキストの取り消し線書式を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleDoubleStrikethroughFormatting">
+            <summary>選択テキストの二重取り消し線書式を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleSingleUnderlineFormatting">
+            <summary>選択したテキストで一重下線の書式設定を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.AlignParagraphContentLeft">
+            <summary>現在の選択と交差する段落でコンテンツを左揃えにします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.AlignParagraphContentRight">
+            <summary>現在の選択と交差する段落でコンテンツを右揃えにします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.AlignParagraphContentCenter">
+            <summary>現在の選択と交差する段落でコンテンツを中央揃えにします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.AlignParagraphContentJustified">
+            <summary>現在の選択と交差する段落でコンテンツを両端揃えにします。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectAll">
+            <summary><see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> のすべてのコンテンツを選択します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Delete">
+            <summary>現在の位置の文字を削除します。ゼロ以外の長さの選択がある場合、選択テキストは削除されます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DeleteNextWord">
+            <summary>カレットが単語の間にある場合、次の単語を削除します。カレットが単語内にある場合、現在の単語の終わりまで削除します。ゼロ以外の長さの選択がある場合、選択テキストは削除されます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.DeletePreviousWord">
+            <summary>カレットが単語の間にある場合、前の単語を削除します。カレットが単語内にある場合、現在の単語の開始まで削除します。ゼロ以外の長さの選択がある場合、選択テキストは削除されます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ContextMenu">
+            <summary>コントロールのコンテキスト メニューを現在のカレット位置に表示します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveDown">
+            <summary>カレットを 1 行下に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveUp">
+            <summary>カレットを 1 行上に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveDownByPage">
+            <summary>カレットを 1 ページ下に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveUpByPage">
+            <summary>カレットを 1 ページ上に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToPreviousCharacter">
+            <summary>カレットを 1 文字左に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToNextCharacter">
+            <summary>カレットを 1 文字右に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToPreviousWord">
+            <summary>カレットを前の単語の開始位置に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToNextWord">
+            <summary>カレットを次の単語の開始位置に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToStartOfDocument">
+            <summary>カレットをドキュメントの始点に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToEndOfDocument">
+            <summary>カレットをドキュメントの終点に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToStartOfLine">
+            <summary>カレットを現在の行の始点に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.MoveToEndOfLine">
+            <summary>カレットを現在の行の終点に移動します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectDown">
+            <summary>選択範囲を 1 行下に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectUp">
+            <summary>選択範囲を 1 行上に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectDownByPage">
+            <summary>選択範囲を 1 ページ下に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectUpByPage">
+            <summary>選択範囲を 1 ページ上に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectPreviousCharacter">
+            <summary>選択範囲を前の文字に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectNextCharacter">
+            <summary>選択範囲を次の文字に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectPreviousWord">
+            <summary>選択範囲を前の単語に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectNextWord">
+            <summary>選択範囲を次の単語に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectToStartOfDocument">
+            <summary>選択範囲をドキュメントの始点に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectToEndOfDocument">
+            <summary>選択範囲をドキュメントの終点に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectToStartOfLine">
+            <summary>選択範囲を現在の行の始点に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.SelectToEndOfLine">
+            <summary>選択範囲を現在の行の終点に追加します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleInsert">
+          <summary>入力モードを「挿入」と「上書き入力」間で切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleSubscript">
+          <summary>選択したテキストの下付き文字書式設定を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleSuperscript">
+          <summary>選択したテキストの上付き文字書式設定を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.Backspace">
+          <summary>現在の位置または現在の選択の上にバックスペースが入力されることを要求します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleBullets">
+          <summary>カレットを含む行または現在の選択で行頭文字書式設定を切り替えます。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.RichTextEditorCommandType.ToggleNumbering">
+          <summary>カレットを含む行または現在の選択で数字書式設定を切り替えます。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewChanged" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs.#ctor(Infragistics.Controls.Editors.RichDocumentView,Infragistics.Controls.Editors.RichDocumentView)">
+            <summary>コンストラクター。</summary>
+            <param name="oldDocumentView">前のビューを表す <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+            <param name="newDocumentView">新しいビューを表す <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs.NewDocumentView">
+            <summary>新しいアクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs.OldDocumentView">
+            <summary>新しいアクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.ContextMenuOpeningEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuOpening" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ContextMenuOpeningEventArgs.#ctor(Infragistics.Controls.Menus.XamContextMenu)">
+            <summary>コンストラクター。</summary>
+            <param name="contextMenu">開かれようとする <see cref="T:Infragistics.Controls.Menus.XamContextMenu" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.ContextMenuOpeningEventArgs.ContextMenu">
+            <summary>開かれようとする <see cref="T:Infragistics.Controls.Menus.XamContextMenu" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.ContextMenuClosingEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuClosing" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ContextMenuClosingEventArgs.#ctor(Infragistics.Controls.Menus.XamContextMenu)">
+            <summary>コンストラクター。</summary>
+            <param name="contextMenu">閉じられようとする <see cref="T:Infragistics.Controls.Menus.XamContextMenu" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.ContextMenuClosingEventArgs.ContextMenu">
+            <summary>閉じられようとする <see cref="T:Infragistics.Controls.Menus.XamContextMenu" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.DocumentChangedEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentChanged" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.DocumentChangedEventArgs.#ctor(Infragistics.Documents.RichText.RichTextDocument,Infragistics.Documents.RichText.RichTextDocument)">
+            <summary>コンストラクター。</summary>
+            <param name="oldDocument">前のドキュメントを表す <see cref="T:Infragistics.Documents.RichText.RichTextDocument" />。</param>
+            <param name="newDocument">新しいドキュメントを表す <see cref="T:Infragistics.Documents.RichText.RichTextDocument" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.DocumentChangedEventArgs.NewDocument">
+            <summary>編集中の新しい <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.DocumentChangedEventArgs.OldDocument">
+            <summary>編集中の前の <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichDocumentViewLayoutChangedEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.RichDocumentView.LayoutChanged" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichDocumentViewLayoutChangedEventArgs.#ctor">
+            <summary>コンストラクター</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.HyperlinkExecuting" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs.#ctor(System.String)">
+            <summary>コンストラクター。</summary>
+            <param name="uri">ハイパーリンクが移動する Uri を表す文字列。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs.Uri">
+            <summary>ハイパーリンクが移動する Uri を返すか、設定します</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs.WorkingDirectory">
+            <summary><see cref="P:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs.Uri" /> が相対ファイル参照を表すときに使用する作業ディレクトリを返すか、設定します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SelectionChanged" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs.#ctor(Infragistics.Controls.Editors.RichDocumentView)">
+            <summary>コンストラクター。</summary>
+            <param name="documentView">選択を変更した <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs.DocumentView">
+            <summary>選択を変更した <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.SplitStatusChangedEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SplitStatusChanged" /> イベントで渡す引数を定義するクラス。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.SplitStatusChangedEventArgs.#ctor(System.Boolean,System.Boolean)">
+            <summary>コンストラクター。</summary>
+            <param name="oldSplitStatus">古い分割状態。</param>
+            <param name="newSplitStatus">新しい分割状態。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.SplitStatusChangedEventArgs.NewSplitStatus">
+            <summary>新しい分割状態を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.SplitStatusChangedEventArgs.OldSplitStatus">
+            <summary>古い分割状態を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.ViewEventArgs">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewLoaded" /> イベントと <see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewUnloaded" /> イベントで渡した引数を定義するクラス。</summary>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewLoaded" />
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewUnloaded" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ViewEventArgs.#ctor(Infragistics.Controls.Editors.RichDocumentView)">
+            <summary>コンストラクター。</summary>
+            <param name="documentView">イベントに関連付けられた <see cref="T:Infragistics.Controls.Editors.RichDocumentView" />。</param>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.ViewEventArgs.DocumentView">
+            <summary>イベントに関連付けられた <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.FindReplaceManager">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> および <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> の検索管理および検索/置換および強調表示サービスを提供します。このクラスのインスタンスが <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.FindReplaceManager" /> プロパティによりアクセス可能です。</summary>
+            <remarks>FindReplaceManager はテキストの検索 (<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.FindInDocument(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" />、<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSpan(System.String,Infragistics.Documents.RichText.DocumentSpan,System.String@,Infragistics.Documents.RichText.FindCriteria)" />、<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSpans(System.String,Infragistics.Documents.RichText.DocumentSpan[],System.String@,Infragistics.Documents.RichText.FindCriteria)">FindInSpans</see> および <see cref="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSelection(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" />) および変換 (<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.ReplaceCurrent(System.String,System.String@)" /> および <see cref="M:Infragistics.Controls.Editors.FindReplaceManager.ReplaceAll(System.String,System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" />) のメソッドを公開します。FindReplaceManager は、最近の検索操作によって生成された <see cref="T:Infragistics.Documents.RichText.FindMatch" /> に繰り返すための IEnumerable および IEnumerator も実装します。注: 検索操作が実行されたとき、<see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> は検索したテキストを含むために変更されます。FindReplaceManager もテキスト文字列の 1 つ以上の強調表示を管理するために <see cref="M:Infragistics.Controls.Editors.FindReplaceManager.Highlight(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" /> および <see cref="M:Infragistics.Controls.Editors.FindReplaceManager.ClearHighlighting" /> メソッドを公開します。<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.Highlight(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" /> への各呼び出しにより、強調表示する項目のリストに一致を追加します。<see cref="M:Infragistics.Controls.Editors.FindReplaceManager.ClearHighlighting" /> は強調表示される項目のリストをクリアします。注: ドキュメントへの変更も強調表示された項目の現在のリストをクリアします。</remarks>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.ClearHighlighting">
+            <summary>強調表示された項目のリストをクリアします。</summary>
+            <remarks><see cref="M:Infragistics.Controls.Editors.FindReplaceManager.Highlight(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" /> メソッドを呼び出すと、項目を強調表示します。</remarks>
+            <seealso cref="M:Infragistics.Controls.Editors.FindReplaceManager.Highlight(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.ClearResults">
+            <summary>以前の検索操作の結果をクリアします。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.FindInDocument(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary>現在の <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> で指定したテキストと一致する文字列をすべて検索します。</summary>
+            <param name="textToFind">検索するテキスト。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>検索した指定したテキストの回数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSpan(System.String,Infragistics.Documents.RichText.DocumentSpan,System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary>指定した <see cref="T:Infragistics.Documents.RichText.DocumentSpan" /> で指定したテキストと一致する文字列をすべて検索します。</summary>
+            <param name="textToFind">検索するテキスト。</param>
+            <param name="spanToSearch">テキストを検索する先の <see cref="T:Infragistics.Documents.RichText.DocumentSpan" />。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>検索した指定したテキストの回数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSpans(System.String,Infragistics.Documents.RichText.DocumentSpan[],System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary><see cref="T:Infragistics.Documents.RichText.DocumentSpan" /> の指定した配列で指定したテキストと一致する文字列をすべて検索します。</summary>
+            <param name="textToFind">検索するテキスト。</param>
+            <param name="spansToSearch">テキストを検索する先の <see cref="T:Infragistics.Documents.RichText.DocumentSpan" /> の配列。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>検索した指定したテキストの回数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.FindInSelection(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary>現在の <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> で指定したテキストと一致する文字列をすべて検索します。</summary>
+            <param name="textToFind">検索するテキスト。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>検索した指定したテキストの回数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.Highlight(System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary>指定したテキストと一致する文字列をすべて検索し、強調表示します。アクティブな選択がある場合、選択のみで検索します。それ以外の場合、ドキュメントを全体検索します。</summary>
+            <param name="textToHighlight">強調表示するテキスト。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>検索した指定したテキストの回数。</returns>
+            <seealso cref="M:Infragistics.Controls.Editors.FindReplaceManager.ClearHighlighting" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.MoveToNearestMatchFollowingOffset(System.Int32)">
+            <summary>開始オフセットが指定したオフセットの後にある列挙子の最初の一致に移動します。</summary>
+            <remarks>指定したオフセットの後に開始オフセットを持つ一致がない場合、False が返され、<see cref="P:Infragistics.Controls.Editors.FindReplaceManager.Current" /> は null に設定されます。</remarks>
+            <param name="offset">参照オフセット。</param>
+            <returns>一致が指定したオフセットの後に検索された場合は True。それ以外の場合は False。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.MoveToNearestMatchPreceedingOffset(System.Int32)">
+            <summary>開始オフセットが指定したオフセットの後にある列挙子の最初の一致に移動します。</summary>
+            <remarks>指定したオフセットの前にある開始オフセットを持つ一致がない場合、False が返され、<see cref="P:Infragistics.Controls.Editors.FindReplaceManager.Current" /> は null に設定されます。</remarks>
+            <param name="offset">参照オフセット。</param>
+            <returns>一致が指定したオフセットの前に検索された場合は True。それ以外の場合は False。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.ReplaceCurrent(System.String,System.String@)">
+            <summary>現在の検索一致を指定したテキストと変換します。現在の検索一致がない場合は何もしません。</summary>
+            <param name="replacementText">現在の検索一致の変換として使用するテキスト。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <returns>成功の場合は True、そうでない場合は False。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.ReplaceAll(System.String,System.String,System.String@,Infragistics.Documents.RichText.FindCriteria)">
+            <summary>textToFind のすべての一致を replacementText と置換します。</summary>
+            <param name="textToFind">置換テキスト。</param>
+            <param name="replacementText">各 textToFind と一致した際に置換として使用するテキスト。</param>
+            <param name="error">エラーが発生された場合、エラー メッセージ。</param>
+            <param name="findCriteria">操作で使用する <see cref="T:Infragistics.Documents.RichText.FindCriteria" />。</param>
+            <returns>実行した置換の数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.SelectAllMatches">
+            <summary>すべての現在の検索一致を <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> で選択します。</summary>
+            <returns>選択されている一致の数。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.SelectCurrentMatch">
+            <summary>現在の検索一致 (ある場合) を <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> で選択します。</summary>
+            <returns>「現在の一致」があり、選択される場合は True。それ以外の場合 False を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.SelectNextMatch">
+            <summary>次の検索一致 (ある場合) を <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> で選択します。</summary>
+            <returns>「次の一致」が検索され、選択される場合は True。それ以外の場合 False を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.SelectPreviousMatch">
+            <summary>前の検索一致 (ある場合) を <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> で選択します。</summary>
+            <returns>「前の一致」が検索され、選択される場合は True。それ以外の場合 False を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.Dispose">
+            <summary>列挙子を破棄します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.MoveNext">
+            <summary>列挙子を次の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> へ移動します。</summary>
+            <returns>列挙子が次の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> へ移動した場合は True。それ以外の場合は False。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.MovePrevious">
+            <summary>列挙子を以前の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> へ移動します。</summary>
+            <returns>列挙子が以前の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> へ移動した場合は True。それ以外の場合は False。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.Reset">
+            <summary>最初の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> の前の位置に列挙子をリセットします。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.GetEnumerator">
+            <summary>コレクションで反復する列挙体を返します。</summary>
+            <returns>列挙子</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.FindReplaceManager.System#Collections#IEnumerable#GetEnumerator">
+            <summary>コレクションで反復する列挙体を返します。</summary>
+            <returns>列挙子</returns>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.FindMatchesCount">
+            <summary>最近の検索操作によって検索した一致の数を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.HighlightMatchesCount">
+            <summary>現在の強調表示項目のカウントを返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.IsFindReplaceDialogActive">
+            <summary>検索/変換ダイアログがアクティブであるかどうかを取得または設定します。</summary>
+            <remarks>XamRichTextEditor ではなくダイアログがキーボード フォーカスがある場合、<see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> が <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrush" /> を使用できるために、FindReplaceManager を使用してクライアントの検索/変換ダイアログがこのプロパティを適切に設定する必要があります。</remarks>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.RichTextEditor">
+            <summary>関連付けられた <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> を返します。(読み取り専用)</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.Current">
+            <summary>現在の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> を返すか、現在の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> がない場合に null 値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.FindReplaceManager.System#Collections#IEnumerator#Current">
+            <summary>現在の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> を返すか、現在の <see cref="T:Infragistics.Documents.RichText.FindMatch" /> がない場合に null 値を返します。</summary>
+        </member>
+        <member name="E:Infragistics.Controls.Editors.FindReplaceManager.PropertyChanged">
+            <summary>このオブジェクトのプロパティが変化すると発生するイベント。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.ScrollManager">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のスクロールローリングを管理するクラス。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ViewSelectionManager.Redo">
+            <summary>前回の編集アクティビティをやり直します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.ViewSelectionManager.Undo">
+            <summary>前回の編集アクティビティを取り消します。</summary>
+        </member>
+        <member name="E:Infragistics.Controls.Editors.ViewSelectionManager.PropertyChanged">
+            <summary>このオブジェクトのプロパティが変化すると発生するイベント。</summary>
+        </member>
+        <member name="T:Infragistics.Controls.Editors.Resources">
+            <summary>このアセンブリ用の <see cref="T:Infragistics.Shared.ResourceCustomizer" /> インスタンスを公開します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.Resources.Customizer" /> 
+            <seealso cref="T:Infragistics.Shared.ResourceCustomizer" /> 
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetString(System.String,System.Object[])">
+            <summary>指定された名前とデフォルト使用言語を使用してリソース文字列を返します。</summary>
+            <param name="name">取得する文字列リソースの名前。</param>
+            <param name="args">文字列を書式設定するとき、string.Format メソッドに提供される引数。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetString(System.String)">
+            <summary>指定したリソース名とデフォルト使用言語を使用して リソース文字列を返します。この文字列は指定した引数を使用して書式設定されます。</summary>
+            <param name="name">取得する文字列リソースの名前。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetDynamicResourceString(System.String)">
+            <summary>リソースに対するカスタマイズ変更を追跡する DynamicResourceString オブジェクトを返し、リソース値が変更されるとイベントを発生します。</summary>
+            <param name="name">取得する文字列リソースの名前。</param>
+            <returns>リソース カスタマイズで変更を追跡するための <see cref="T:Infragistics.Shared.DynamicResourceString" /> オブジェクト。</returns>
+            <seealso cref="T:Infragistics.Shared.ResourceCustomizer" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.SetCustomizedString(System.String,System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetCustomizedString(System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetAllCustomizedStrings" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetDynamicResourceString(System.String,System.Object[])">
+            <summary>リソースに対するカスタマイズ変更を追跡する DynamicResourceString オブジェクトを返し、リソース値が変更されるとイベントを発生します。</summary>
+            <param name="name">取得する文字列リソースの名前。</param>
+            <param name="args">文字列を書式設定するとき、string.Format メソッドに提供される引数。</param>
+            <returns>リソース カスタマイズで変更を追跡するための <see cref="T:Infragistics.Shared.DynamicResourceString" /> オブジェクト。</returns>
+            <seealso cref="T:Infragistics.Shared.ResourceCustomizer" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.SetCustomizedString(System.String,System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetCustomizedString(System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetAllCustomizedStrings" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetDynamicResourceString(System.String,System.Object[],System.Globalization.CultureInfo)">
+            <summary>リソースに対するカスタマイズ変更を追跡する DynamicResourceString オブジェクトを返し、リソース値が変更されるとイベントを発生します。</summary>
+            <param name="name">取得する文字列リソースの名前。</param>
+            <param name="args">文字列を書式設定するとき、string.Format メソッドに提供される引数。</param>
+            <param name="culture">リソースが読み込みされるカルチャー。リソースは、フォールバック処理を通じて、適切なリソースを探します。</param>
+            <returns>リソース カスタマイズで変更を追跡するための <see cref="T:Infragistics.Shared.DynamicResourceString" /> オブジェクト。</returns>
+            <seealso cref="T:Infragistics.Shared.ResourceCustomizer" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.SetCustomizedString(System.String,System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetCustomizedString(System.String)" />
+            <seealso cref="M:Infragistics.Shared.ResourceCustomizer.ResetAllCustomizedStrings" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.Resources.GetObject(System.String)">
+            <summary>指定された名前を使用してリソース オブジェクトを返します</summary>
+            <param name="name">リソース項目の名前</param>
+            <returns>指定されたリソースを含むオブジェクト。</returns>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.Resources.Customizer">
+            <summary>このアセンブリの <see cref="T:Infragistics.Shared.ResourceCustomizer" /> を返します。</summary>
+            <seealso cref="T:Infragistics.Shared.ResourceCustomizer" /> 
+        </member>
+        <member name="T:Infragistics.Controls.Editors.XamRichTextEditor">
+            <summary>リッチ コンテンツ (テキストおよびオブジェクト) を表示して編集し、コンテンツに書式設定を適用し、web レイアウト スタイルを使用してコンテンツを描画する可能なコントロール。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.ArrangeOverride(System.Windows.Size)">
+            <summary>子要素を配置します。</summary>
+            <param name="finalSize">要素の配置に使用する最終サイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.MeasureOverride(System.Windows.Size)">
+            <summary>子要素を測定します。</summary>
+            <param name="availableSize">子要素に利用できるサイズ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnApplyTemplate">
+            <summary>新しいテンプレートを適用するときに呼び出します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnCreateAutomationPeer">
+            <summary>UI オートメーションに <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> を公開するオートメーション ピアを返します。</summary>
+            <returns><see cref="T:Infragistics.AutomationPeers.XamRichTextEditorAutomationPeer" />。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+          <summary>マウスが要素から離れたときに呼び出します。</summary>
+          <param name="e">イベントに関連付けられた引数。</param>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnMouseWheel(System.Windows.Input.MouseWheelEventArgs)">
+            <summary>MouseWheel を回転したときに呼び出します。</summary>
+            <param name="e">イベントに関連付けられたデータ。</param>
+        </member>
+      <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+        <summary>エディターでキーが押されたときに呼び出されます。</summary>
+        <param name="e">イベントについての情報を提供します。</param>
+      </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnGotKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>コントロールがキーボード フォーカスを受けるときに呼び出されます。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)">
+            <summary>コントロールがキーボード フォーカスを失うときに呼び出されます。</summary>
+        </member>
+      <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsReturnProperty">
+        <summary>
+          <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsReturn"/> 依存プロパティを識別します。
+        </summary>
+      </member>
+      <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsReturn">
+        <summary>ユーザーが ENTER キーを押されたときにテキスト編集コントロールが応答する方法を示す値を取得または設定します。</summary>
+        <returns>true の場合、ENTER キーは現在のカーソル位置に新しい行を挿入します。それ以外の場合、ENTER キーは無視されます。デフォルト値は True です。</returns>
+      </member>
+      <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsTabProperty">
+        <summary>
+          <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsTab"/> 依存プロパティを識別します。
+        </summary>
+      </member>
+      <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.AcceptsTab">
+        <summary>ユーザーが TAB キーを押されたときにテキスト編集コントロールが応答する方法を示す値を取得または設定します。</summary>
+        <returns>true の場合、TAB キーの押しは現在のカーソル位置に tab 文字を挿入します。false の場合、TAB キーの押しはタブ位置として設定される次のコントロールにフォーカスを移動し、tab 文字を挿入しません。デフォルト値は false です。</returns>
+      </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewPropertyKey">
+            <summary>読み取り専用の <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> 依存プロパティのプロパティ キーを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewProperty">
+            <summary>読み取り専用  <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplittingProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.CaretPropertyKey">
+            <summary>読み取り専用の <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" /> 依存プロパティのプロパティ キーを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.CaretProperty">
+            <summary>読み取り専用  <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.CaretColorProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.CaretColor" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardFormatsProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardFormats" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardSerializationProvidersProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardSerializationProviders" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.DocumentProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayModeProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.HorizontalScrollBarVisibilityProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HorizontalScrollBarVisibility" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentViewPropertyKey">
+            <summary>読み取り専用の <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentView" /> 依存プロパティのプロパティ キーを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentViewProperty">
+            <summary>読み取り専用  <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentView" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplitProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.IsMultiSelectEnabledProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsMultiSelectEnabled" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.IsReadOnlyProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsReadOnly" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.IsUndoEnabledProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsUndoEnabled" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionPropertyKey">
+            <summary>読み取り専用の <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> 依存プロパティのプロパティ キーを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionProperty">
+            <summary>読み取り専用  <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrushProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrush" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightInactiveBrushProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightInactiveBrush" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateModeProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateMode" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.VerticalScrollBarVisibilityProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.VerticalScrollBarVisibility" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelProperty">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="F:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelAsPercentageProperty">
+            <summary>読み取り専用 <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelAsPercentage" /> 依存プロパティを識別します。</summary>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.GetPositionFromPoint(System.Windows.Point,System.Boolean)">
+          <summary>指定されたポイントに相対する一番近いテキスト挿入位置を表すドキュメント オフセットを返します。</summary>
+          <param name="point">一番近いテキスト挿入位置を検索するためにテストするべき XamRichTextEditor コントロールに相対するポイント。</param>
+          <param name="snapToText">True の場合、指定したポイントが文字の境界ボックス内にあるかどうかに関係なく、このメソッドは常にドキュメント オフセットを返します。False の場合、指定したポイントが任意の文字の境界ボックス内にない場合、メソッドは null 値を返します。</param>
+          <returns>指定したポイントに一番近いテキスト挿入位置のドキュメント オフセット。一番近いテキスト挿入位置が決定されない場合、null 値。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnActiveDocumentViewChanged(Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnClipboardOperationExecuting(Infragistics.Documents.RichText.RichTextClipboardOperationCancelEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuting" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuting" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextClipboardOperationCancelEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnClipboardOperationExecuted(Infragistics.Documents.RichText.RichTextClipboardOperationEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuted" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuted" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextClipboardOperationEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnContextMenuOpening(Infragistics.Controls.Editors.ContextMenuOpeningEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuOpening" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuOpening" />
+            <seealso cref="T:Infragistics.Controls.Editors.ContextMenuOpeningEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnContextMenuClosing(Infragistics.Controls.Editors.ContextMenuClosingEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuClosing" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuClosing" />
+            <seealso cref="T:Infragistics.Controls.Editors.ContextMenuClosingEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnDocumentChanged(Infragistics.Controls.Editors.DocumentChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.DocumentChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnDocumentContentChanged(Infragistics.Documents.RichText.DocumentContentChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentContentChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentContentChanged" />
+            <seealso cref="T:Infragistics.Documents.RichText.DocumentContentChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnHyperlinkExecuting(Infragistics.Controls.Editors.HyperlinkExecutingEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.HyperlinkExecuting" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.HyperlinkExecuting" />
+            <seealso cref="T:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnSelectionChanged(Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SelectionChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SelectionChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnSplitStatusChanged(Infragistics.Controls.Editors.SplitStatusChangedEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SplitStatusChanged" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.SplitStatusChanged" />
+            <seealso cref="T:Infragistics.Controls.Editors.SplitStatusChangedEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnViewLoaded(Infragistics.Controls.Editors.ViewEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewLoaded" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewLoaded" />
+            <seealso cref="T:Infragistics.Controls.Editors.ViewEventArgs" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.OnViewUnloaded(Infragistics.Controls.Editors.ViewEventArgs)">
+            <summary><see cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewUnloaded" /> イベントを呼び出します。</summary>
+            <param name="args">イベントを発生させるためのイベント引数。</param>
+            <seealso cref="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewUnloaded" />
+            <seealso cref="T:Infragistics.Controls.Editors.ViewEventArgs" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView">
+            <summary>現在のアクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します (読み取り専用)。</summary>
+            <remarks>
+            <para class="body">アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> はキーボード フォーカスがあるビューです。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewProperty" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLocation" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting">
+            <summary>エンド ユーザーがドキュメント ビューを水平に分割できるかどうかを返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> に関連付けられた <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" /> を返します (読み取り専用)。</summary>
+            <remarks>
+            <para class="body"><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> はキーボード フォーカスがある <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> です。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.CaretProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.CaretColor">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" /> の色に使用される <see cref="T:Infragistics.Documents.RichText.ColorInfo" /> を返すか、設定します。デフォルトは <see cref="P:Infragistics.Documents.RichText.ColorInfo.Automatic" /> です。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.CaretColorProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Caret" />
+            <seealso cref="T:Infragistics.Documents.RichText.ColorInfo" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardFormats">
+            <summary>読み込みの優先順序でクリップボード形式のコンマで区切ったリストを返すか、設定します。</summary>
+            <remarks>書式は、System.Windows.DataFormats クラスおよび (または) .NET タイプ名によって公開された静的な文字列プロパティに対応する必要があります。</remarks>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardSerializationProviders" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardSerializationProviders">
+            <summary>クリップボードと対話する際にコントロールが使用する <see cref="T:Infragistics.Documents.RichText.Serialization.SerializationProviderBase" /> インスタンスのリストを返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardSerializationProviders" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.Document">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> が編集する <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> を返すか、設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.DocumentProperty" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.FindReplaceManager">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> および <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> のために検索結果の管理、検索/変換サービス、および強調表示サービスを提供するオブジェクトを返します。</summary>
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode">
+            <summary>段落記号と他の非表示記号を表示するかどうかを返すか、設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayModeProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HiddenSymbolDisplayMode" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.HorizontalScrollBarVisibility">
+            <summary>水平スクロールバーの表示状態を返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HorizontalScrollBarVisibility" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentView">
+            <summary>現在の非アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を返します。非アクティブなビューがない場合、null を返します (読み取り専用)。</summary>
+            <remarks>
+            <para class="body">アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> はキーボード フォーカスがあるビューです。追加のビューを作成するには、アクティブなビューを分割します。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.InactiveDocumentViewProperty" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewLocation" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit">
+            <summary>ドキュメント ビューが水平に分割されるかどうかを返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.AllowDocumentViewSplitting" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.IsMultiSelectEnabled">
+            <summary>コントロールで複数 <see cref="T:Infragistics.Documents.RichText.Range" /> の選択を許可するかどうかを返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+            <seealso cref="T:Infragistics.Documents.RichText.Range" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.IsReadOnly">
+            <summary>コントロールで <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" /> の変更を許可するかどうかを返すか、設定します。</summary>
+            <remarks>注: <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> も IsReadOnly プロパティを公開します。このプロパティまたは <see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> の相対するプロパティが True に設定される場合、<see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> は文書への変更を許可しません。</remarks>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.IsUndoEnabled">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" /> で元に戻すログの状態を取得または設定します。デフォルトは true です。</summary>
+            <remarks><b>注:</b> このプロパティが True の場合、エンド ユーザーが文書を変更するときに、コントロールは元に戻すログが <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" /> で開始されることを確認します。このプロパティが False に設定される場合、コントロールはただちに文書の元に戻すログを中止し、元に戻す履歴をクリアして、エンド ユーザーが文書を変更してもプロパティが True に設定されるまで再開始しません。このプロパティを元に戻すログを制御するために使用する場合に、このプロパティの動作を変更するため、直接 <see cref="M:Infragistics.Documents.RichText.RichTextDocument.StartUndoLogging" /> または <see cref="M:Infragistics.Documents.RichText.RichTextDocument.StopUndoLogging" /> を呼び出さないでください。このプロパティは、ViewModel バインディングによって元に戻すログの制御を有効にするために適用されます。</remarks>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection">
+            <summary>現在アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> のある <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" /> を返すか、設定します。アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> がない場合 null。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+            <seealso cref="T:Infragistics.Documents.RichText.Range" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrush">
+            <summary>選択を含むビューがアクティブな場合に、選択を強調表示する色を設定するブラシを取得または設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrushProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightInactiveBrush" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightInactiveBrush">
+            <summary>選択を含むビューが非アクティブな場合に、選択を強調表示する色を設定するブラシを取得または設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightInactiveBrushProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.SelectionHighlightActiveBrush" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateMode">
+            <summary><see cref="T:Infragistics.Documents.RichText.RichTextDocument" /> にいかに新しいテキストを適用するかを返すか、設定します。</summary>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.TextUpdateModeProperty" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentViewTextUpdateMode" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.VerticalScrollBarVisibility">
+            <summary>垂直スクロールバーの表示状態を返すか、設定します。</summary>
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.HorizontalScrollBarVisibility" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel">
+            <summary>コントロールのテキスト領域のズーム レベルを返すか、設定します。テキストとすべての Margin は、ズーム領域に組み込まれます。スクロールバーは組み込みません。</summary>
+            <remarks>
+            <para class="note"><b>注:</b> この値は 1.0 が 100% のパーセンテージで表します。有効な値は .2 から 4.0 です。</para>
+            <para class="body">ブラウザー実行時にテキスト領域をズームするには (Silverlight or WPF)、ALT キーを押しながらスクロールします。ブラウザーの外に出るときは、CTRL キーを押してマウスホイールをスクロールします。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelAsPercentage" />
+        </member>
+        <member name="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelAsPercentage">
+            <summary>パーセンテージで表現した <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel" /> プロパティの値を返します。(読み取り専用)</summary>
+            <remarks>
+            <para class="body">たとえば、<see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel" /> を 1.0 に設定すると、このプロパティは 100 を返します。</para>
+            </remarks>
+            <seealso cref="F:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevelAsPercentageProperty" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ZoomLevel" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentViewChanged">
+            <summary>コントロールのアクティブ <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> が変化した後に発生します。</summary>
+            <remarks>
+            <para class="body">アクティブな <see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> はキーボード フォーカスがあるビューです。</para>
+            </remarks>
+            <seealso cref="T:Infragistics.Controls.Editors.ActiveDocumentViewChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuting">
+            <summary>クリップボード操作 (切り取り、コピー、貼り付け) が実行する前に発生されます。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextClipboardOperationEventArgs" />
+            <seealso cref="T:Infragistics.Controls.Editors.ClipboardOperation" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ClipboardOperationExecuted">
+            <summary>クリップボード操作 (切り取り、コピー、貼り付け) が実行する前に発生されます。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextClipboardOperationCancelEventArgs" />
+            <seealso cref="T:Infragistics.Controls.Editors.ClipboardOperation" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuOpening">
+            <summary>コンテキスト メニューが開くときに発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.ContextMenuOpeningEventArgs" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ContextMenuClosing">
+            <summary>コンテキスト メニューが閉じるときに発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.ContextMenuClosingEventArgs" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentChanged">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> のドキュメントが変化した後に発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.DocumentChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.DocumentContentChanged">
+            <summary><see cref="T:Infragistics.Controls.Editors.XamRichTextEditor" /> のドキュメントが変化した後に発生します。</summary>
+            <seealso cref="T:Infragistics.Documents.RichText.DocumentContentChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Document" />
+            <seealso cref="T:Infragistics.Documents.RichText.RichTextDocument" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.HyperlinkExecuting">
+            <summary>ハイパーリンクを実行する前 (ハイパーリンクと関連する URI へ移動する前) に発生します。<see cref="T:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs" /> の Uri プロパティを変更すると、ナビゲーション先を変更できます。Cancel プロパティを True に設定すると、ナビゲーションをキャンセルできます。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.HyperlinkExecutingEventArgs" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.SelectionChanged">
+            <summary><see cref="T:Infragistics.Documents.RichText.Selection" /> が <see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.ActiveDocumentView" /> で変更されたあとに発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.RichTextSelectionChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.RichDocumentView.Selection" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.Selection" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.SplitStatusChanged">
+            <summary><see cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" /> が変化した後に発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.SplitStatusChangedEventArgs" />
+            <seealso cref="P:Infragistics.Controls.Editors.XamRichTextEditor.IsDocumentViewSplit" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewLoaded">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> を読み込んだ後で、それが表示される前に発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.ViewEventArgs" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="E:Infragistics.Controls.Editors.XamRichTextEditor.ViewUnloaded">
+            <summary><see cref="T:Infragistics.Controls.Editors.RichDocumentView" /> をアンロードした後に発生します。</summary>
+            <seealso cref="T:Infragistics.Controls.Editors.ViewEventArgs" />
+            <seealso cref="T:Infragistics.Controls.Editors.RichDocumentView" />
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey.GetHashCode">
+            <summary>構造のハッシュ コードを返します。</summary>
+            <returns>このインスタンスのハッシュ コード。</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey.Equals(System.Object)">
+            <summary>指定されたオブジェクトとこのオブジェクトが等しいかを比較します。</summary>
+            <param name="obj">比較するオブジェクト</param>
+            <returns>オブジェクトが等しい場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey.op_Equality(Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey,Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey)">
+            <summary>2 つの <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey" /> 構造の値を比較して一致するかどうか調べます。</summary>
+            <param name="item1">1 つの構造</param>
+            <param name="item2">他の構造</param>
+            <returns>2 つのインスタンスが等しい場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="M:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey.op_Inequality(Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey,Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey)">
+            <summary>2 つの <see cref="T:Infragistics.Controls.Editors.XamRichTextEditor.LayoutManagerCacheKey" /> 構造の値が等しいか比較します。</summary>
+            <param name="item1">1 つの構造</param>
+            <param name="item2">他の構造</param>
+            <returns>2 つのインスタンスが等しくない場合は True、そうでない場合は False</returns>
+        </member>
+        <member name="M:LocalizedCategoryAttribute.GetLocalizedString(System.String)">
+            <summary>ローカライズ済みのカテゴリ名を返します。</summary>
+            <param name="value">取得するカテゴリ名。</param>
+            <returns>ローカライズ済みの文字列値。</returns>
+        </member>
+        <member name="M:InternalDynamicResourceString.#ctor(Infragistics.Shared.ResourceCustomizer,System.Globalization.CultureInfo,System.String,System.Object[])">
+            <summary>このコンストラクターは内部使用のみです。</summary>
+        </member>
+        <member name="M:InternalDynamicResourceString.GetStringFromResource(System.String,System.Globalization.CultureInfo)">
+            <summary>内部使用のみ。</summary>
+        </member>
+    </members>
+</doc>

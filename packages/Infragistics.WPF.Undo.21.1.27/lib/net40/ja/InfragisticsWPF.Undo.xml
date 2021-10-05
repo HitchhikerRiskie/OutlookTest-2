@@ -1,0 +1,1171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+    <assembly>
+        <name>InfragisticsWPF.Undo</name>
+    </assembly>
+    <members>
+        <member name="T:Infragistics.Undo.UndoHistoryItemType">
+            <summary><see cref="T:Infragistics.Undo.UndoHistoryItem"/> が表す操作のタイプを示すために使用します。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoHistoryItemType.Undo">
+            <summary>項目は元に戻す操作を表します。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoHistoryItemType.Redo">
+            <summary>項目はやり直し操作を表します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoExecuteReason">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)"/> の原因を識別するために使用される列挙体</summary>
+            <seealso cref="P:Infragistics.Undo.UndoExecuteContext.Reason"/>
+        </member>
+        <member name="F:Infragistics.Undo.UndoExecuteReason.Undo">
+            <summary>元に戻す操作がリクエストされたため、その操作が実行されています。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoExecuteReason.Redo">
+            <summary>やり直し操作がリクエストされたため、その操作が実行されています</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoExecuteReason.Rollback">
+            <summary><see cref="T:Infragistics.Undo.UndoTransaction"/> がロールバックされていたため、その操作が実行されています。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoTransactionCloseAction">
+            <summary>閉じている時に <see cref="T:Infragistics.Undo.UndoTransaction"/> に発生したことを示すために使用される列挙体。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoTransactionCloseAction.Commit">
+            <summary>グループはコミット/完了されています。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoTransactionCloseAction.Rollback">
+            <summary>グループがキャンセルされおり、オブジェクトを元に戻し、削除する必要があります。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoTransactionCloseAction.Cancel">
+            <summary>グループがキャンセルされおり、オブジェクトを解放する必要があります。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoMergeAction">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)"/> に対する呼び出しの結果を識別するめに使用されます</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoMergeAction.NotMerged">
+            <summary>指定されたユニットからの情報を結合することができず、元に戻すスタックに追加する必要があります。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoMergeAction.Merged">
+            <summary>指定されたユニットからの情報が結合され、元に戻すスタックに追加する必要はありません。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoMergeAction.MergedRemoveUnit">
+            <summary>指定されたユニットからの情報が結合され、元のユニットを元に戻すスタックから削除する必要があります。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.#ctor(System.Int32)">
+            <summary>新しい <see cref="T:Infragistics.Undo.StackList`1"/> を初期化します。</summary>
+            <param name="maxCapacity">保存する項目の最大数</param>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.Clear">
+            <summary>スタックをクリアします</summary>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.GetEnumerator">
+            <summary>スタックの列挙子を返します</summary>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.GetItem(System.Int32)">
+            <summary>スタックの一番上の項目の <paramref name="offset"/> の数である指定された項目を返します。</summary>
+            <param name="offset">項目が取得されるスタックの一番からの、項目オフセットの数</param>
+            <returns>スタックの一番上からの指定された量による項目オフセット</returns>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.Peek">
+            <summary>削除せずに、スタックから追加された一番最近の項目。</summary>
+            <returns>スタックに追加された最後の項目を返します</returns>
+            <exception cref="T:System.InvalidOperationException">「Count」は 1 以上である必要があります。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.Pop">
+            <summary>スタックから一番最近の項目を削除し、それを返します。</summary>
+            <returns>スタックの一番最近の項目。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.StackList`1.Push(`0)">
+            <summary>新しい項目をスタックの一番上に追加します。</summary>
+            <param name="item">スタックに追加する項目</param>
+        </member>
+        <member name="P:Infragistics.Undo.StackList`1.Count">
+            <summary>スタック内の項目数を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.StackList`1.MaxCapacity">
+            <summary>スタックに保存できる項目の最大数を取得または設定します。</summary>
+        </member>
+        <member name="E:Infragistics.Undo.StackList`1.CollectionChanged">
+            <summary>コレクションが変更された後に呼び出されます</summary>
+        </member>
+        <member name="M:Infragistics.Undo.IUndoTransactionOwner.OnChildOpened(Infragistics.Undo.UndoTransaction)">
+            <summary>子 <see cref="T:Infragistics.Undo.UndoTransaction"/> が開いている最中に呼び出されます。</summary>
+            <param name="child">開かれている子グループ</param>
+            <returns>グループを開くことができる場合は true を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.IUndoTransactionOwner.OnChildClosed(Infragistics.Undo.UndoTransaction,Infragistics.Undo.UndoTransactionCloseAction)">
+            <summary>子 <see cref="T:Infragistics.Undo.UndoTransaction"/> が閉じているときに呼び出されます。</summary>
+            <param name="child">閉じられている子グループ</param>
+            <param name="closeAction">発生中の閉じるアクションのタイプを示します。</param>
+        </member>
+        <member name="P:Infragistics.Undo.IUndoTransactionOwner.UndoManager">
+            <summary>関連付けられた <see cref="T:Infragistics.Undo.UndoManager"/> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoExecuteContext">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)"/> メソッドが呼び出されている間に、情報を <see cref="T:Infragistics.Undo.UndoUnit"/> に提供するために使用します。</summary>
+            <seealso cref="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)"/>
+            <seealso cref="T:Infragistics.Undo.UndoExecuteReason"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoExecuteContext.#ctor(Infragistics.Undo.UndoManager,Infragistics.Undo.UndoExecuteReason)">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoExecuteContext"/> を初期化します。</summary>
+            <param name="undoManager"><see cref="T:Infragistics.Undo.UndoUnit"/> が実行されている、UndoManager。</param>
+            <param name="reason">実行をトリガーしたものを示します。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoExecuteContext.GetUnit(System.Int32)">
+            <summary>現在の実行スタック内の UndoUnit を返します。</summary>
+            <param name="offset">実行されている UndoUnit へのオフセット。0 は現在実行されている UndoUnit を返し、<see cref="P:Infragistics.Undo.UndoExecuteContext.UnitCount"/> - 1 は実行されている最も外側のユニットを返します。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoExecuteContext.Execute(Infragistics.Undo.UndoUnit)">
+            <summary>コンテキストとしてこのインスタンスで UndoUnit を実行するために使用されます。</summary>
+            <param name="unit">実行されるユニット。</param>
+        </member>
+        <member name="P:Infragistics.Undo.UndoExecuteContext.ExecuteItemType">
+            <summary>実行中の操作の タイプを示すために使用する列挙体を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoExecuteContext.Reason">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)"/> をトリガーしたものを示す列挙体を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoExecuteContext.UnitCount">
+            <summary>実行中の現在の UndoUnit の深さを返します。</summary>
+            <remarks>実行中のトランザクションがない限り、これは通常 1 を返します。</remarks>
+        </member>
+        <member name="P:Infragistics.Undo.UndoExecuteContext.UndoManager">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> が実行されている <see cref="P:Infragistics.Undo.UndoExecuteContext.UndoManager"/> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoHistoryItem">
+            <summary>元に戻す/やり直し履歴内の項目を表します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoHistoryItem.Execute">
+            <summary>このインスタンスを含みこのインスタンスまでの関連付けられた履歴中のすべての項目を実行します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoHistoryItem.ItemType">
+            <summary>実行される操作のタイプを示す列挙体を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoHistoryItem.LongDescription">
+            <summary>項目の詳細表現を返します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoHistoryItem.ShortDescription"/>
+            <seealso cref="M:Infragistics.Undo.UndoUnit.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoHistoryItem.ShortDescription">
+            <summary>項目の基本文字列表現を返します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoHistoryItem.LongDescription"/>
+            <seealso cref="M:Infragistics.Undo.UndoUnit.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoHistoryItem.UndoManager">
+            <summary>関連付けられた <see cref="P:Infragistics.Undo.UndoHistoryItem.UndoManager"/> を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoHistoryItem.Unit">
+            <summary>呼び出されるアクションを返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManager">
+            <summary>元に戻す/やり直し履歴を管理するために使用するクラス。</summary>
+            <remarks>
+            <p class="body">UndoManager は元に戻す/やり直し履歴を管理します。使用可能なメソッドの 1 つを使用して、<see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスをそれに追加することにより、元に戻す/やり直し履歴に操作を追加します。カスタムの UndoUnit 派生クラスのインスタンス、またはこのアセンブリに含まれるクラスのインスタンスを作成して <see cref="M:Infragistics.Undo.UndoManager.AddChange(Infragistics.Undo.UndoUnit)"/> メソッドを使用できます。UndoManager は UndoUnit を作成して履歴に追加する多数のヘルパー メソッドも公開しています。AddPropertyChange オーバーロードはあるオブジェクトのプロパティの変更を記録するために使用できます。AddCollectionChange オーバーロードは ICollection&gt;T&lt; を実装するコレクションへの変更を記録するために使用できます。残りの AddChange オーバーロードを使用して、マネージャーが元に戻す/やり直し操作を実行中に講じるべき元に戻す/やり直しアクションを表すデリゲートのセットを提供することができます。これらのメソッドは <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactoryResolved"/> を使用します。したがって、これらのメソッドによって作成される UndoUnit タイプを変更したい場合には、<see cref="T:Infragistics.Undo.UndoUnitFactory"/> からクラスを派生し、<see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/> プロパティをそのクラスのインスタンスに設定できます。</p>
+            <p class="body"><see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> と <see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> は <see cref="T:Infragistics.Undo.UndoHistoryItem"/> インスタンスの読み取り専用コレクションです。UndoHistoryItem は、実行される操作を表すルートの <see cref="T:Infragistics.Undo.UndoUnit"/> だけでなく、操作の簡略な説明と詳細な説明を公開します。これらのコレクションは INotifyCollectionChanged を実装しているため、エンドユーザーに履歴を表示するメニューのソースなどとして UI で使用できます。</p>
+            <p class="body"><see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> メソッドと <see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> メソッドを使用して元に戻す/やり直し操作を実行します。これらのメソッドが呼び出されると、<see cref="T:Infragistics.Undo.UndoHistoryItem"/> が関連付けられた履歴 (UndoHistory など) から削除されて、<see cref="P:Infragistics.Undo.UndoHistoryItem.Unit"/> の <see cref="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)"/> メソッドが呼び出されます。デフォルトの UndoUnits は反対の履歴に自動的に移動されないことを知っておくことは重要です。たとえば、プロパティの変更を元に戻している間、プロパティの変更によって AddPropertyChange オーバーロードへの新たな呼び出しが行われることが予想されます。これにより、その変更を表す新しい UndoUnit が作成され UndoManager の履歴に追加されます。その場合、UndoManager は元に戻す操作を実行中であったため、新しい UndoUnit がやり直しの履歴に追加されます。</p>
+            <p class="body">UndoManager は、オブジェクトの現在の状態を示す多数の読み取り専用のブール値プロパティを公開します。<see cref="P:Infragistics.Undo.UndoManager.IsPerformingUndo"/> と <see cref="P:Infragistics.Undo.UndoManager.IsPerformingRedo"/> は元に戻す/やり直し操作をそれぞれ実行する間 True です。<see cref="P:Infragistics.Undo.UndoManager.CanUndo"/> プロパティと <see cref="P:Infragistics.Undo.UndoManager.CanRedo"/> プロパティは元に戻す/やり直し履歴に項目があるかどうかを示します。</p>
+            <p class="body">個別の初期化を実行するとき、<see cref="M:Infragistics.Undo.UndoManager.Suspend"/> メソッドを使用して履歴で UndoUnits のログを一時的に無効にできます。<see cref="M:Infragistics.Undo.UndoManager.Resume"/> メソッドが呼び出されるまで AddChange へのいかなる呼び出しも無視されます。Resume メソッドを呼び出したときには、必ず同じ回数だけ Suspend メソッドを呼び出す必要があります。<see cref="P:Infragistics.Undo.UndoManager.IsSuspended"/> プロパティは Suspend と Resume への呼び出しの間 True を返します。</p>
+            <p class="body">UndoManager は保存された最新の UndoUnit と新しい UndoUnit のマージに対するサポートを提供します。これは同じアクションが複数回発生する場合に役に立ちます。たとえば、Slider のつまみをドラッグする間に、Slider の Value にバインドされたプロパティ。マージは、<see cref="P:Infragistics.Undo.UndoManager.AllowMerging"/> を false に設定することによって無期限に無効にできます。<see cref="M:Infragistics.Undo.UndoManager.PreventMerge"/> メソッドを呼び出すことによって、現在の項目のマージを抑制することも可能です。</p>
+            <p class="body">複数の操作を単一の元に戻すことが可能なアクションとして扱う必要があるときは、トランザクションを使用できます。UndoManager は、<see cref="M:Infragistics.Undo.UndoManager.StartTransaction(System.String,System.String)"/> メソッドを使用してトランザクションに対するサポートを提供します。これは <see cref="T:Infragistics.Undo.UndoTransaction"/> インスタンスを返します。UndoManager に追加されるそれ以降のユニットは、トランザクションがコミットされる (<see cref="M:Infragistics.Undo.UndoTransaction.Commit"/> を参照) またはロールバック (<see cref="M:Infragistics.Undo.UndoTransaction.Rollback"/> を参照) されるまでそのトランザクション内に保管されます。ネストされたトランザクションはサポートされるため、トランザクションが処理中に StartTransaction が呼び出されると <see cref="P:Infragistics.Undo.UndoManager.CurrentTransaction"/> の <see cref="P:Infragistics.Undo.UndoTransaction.Units"/> に追加されます。<see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> プロパティを使用して、存在する場合には、現在のオープンなトランザクションにアクセスできます。また、トランザクション内で実行したいコードのブロックがある場合、<see cref="M:Infragistics.Undo.UndoManager.ExecuteInTransaction(System.String,System.String,System.Action)"/> メソッドを使用できます。このメソッドは、例外は発生する場合に作成するトランザクションの Rollback メソッドの呼び出しを処理します (例外が発生することを防止することなく)。そうでない場合はトランザクションの Commit を呼び出します。<see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> がコミットされたときに、UndoManager の現在の状態に基づいて元に戻す/やり直し履歴に追加されます。</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManager"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddChange(Infragistics.Undo.UndoUnit)">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> を履歴に追加します。</summary>
+            <param name="unit">履歴に追加するユニット。</param>
+            <exception cref="T:System.ArgumentNullException">「unit」は null に設定できません。</exception>
+            <remarks>
+            <p class="body">このオーバーロードは提供された <paramref name="unit"/> を取得して、UndoManager の現在の状態に基づいて元に戻す/やり直しのいずれかの履歴スタックに追加されます。たとえば、Undo (つまり <see cref="P:Infragistics.Undo.UndoManager.IsPerformingUndo"/> が true) を実行する間、変更ユニットがやり直しスタックに追加されます。</p>
+            <p class="note"><b>注:</b> UndoUnit は元に戻すスタックからやり直しスタックにまたはその逆に自動的に移動されません。UndoUnit が行う変更 (つまりプロパティの変更) によって UndoManager に新しい変更が追加されることになる、またはユニット自体が UndoManager にユニット (それ自体であっても) を追加するのいずれかが予想されます。<see cref="M:Infragistics.Undo.UndoManager.AddChange(System.String,System.String,System.Action,System.Action,System.Object)"/> は後者の一例です。関連付けられた元に戻すまたはやり直しデリゲートが成功した場合、そのオーバーロードによって作成された UndoUnit は、UndoManager にそれ自体を追加します。</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddChange(System.String,System.String,System.Func{Infragistics.Undo.UndoExecuteContext,System.Boolean},System.Func{Infragistics.Undo.UndoExecuteContext,System.Boolean},System.Object)">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> を履歴に追加します。</summary>
+            <param name="description">トランザクションの一般記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <param name="undoMethod">Undo が実行されるときに呼び出されるメソッド</param>
+            <param name="redoMethod">Redo が実行されるときに呼び出されるメソッド</param>
+            <param name="target">操作によって影響を受けるオブジェクトを表すパラメーター (オプション)。</param>
+            <remarks>
+            <p class="body">このオーバーロードは、Undo 操作が実行中のときには <paramref name="undoMethod"/> を実行し、Redo 操作が実行中のときには <paramref name="redoMethod"/>を実行する UndoUnit を作成します。この操作が成功する (つまりメソッドが true を返す) 場合、UndoUnit はそれ自体を履歴に追加します。</p>
+            <p class="note"><b>注:</b> 明示的な記述が渡されるため、文字列は、元に戻すおよびやり直しの両方の操作に適用されます。たとえば、「Enable Bold」/「Disable Bold」の代わりに「Bold」または「Toggle Bold」を使用する場合もあります。これは、やり直しスタックに対して変更が作成されている場合、前者は正しくない可能性があるためです。コンテキストに固有の文字列を使用したい場合、<see cref="P:Infragistics.Undo.UndoManager.IsPerformingRedo"/> プロパティを評価することによって、提供する記述を決定できます。</p>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">'undoMethod' パラメーターと 'redoMethod' パラメーターは null にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddChange(System.String,System.String,System.Func{System.Boolean},System.Func{System.Boolean},System.Object)">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> を履歴に追加します。</summary>
+            <param name="description">トランザクションの一般記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <param name="undoMethod">Undo が実行されるときに呼び出されるメソッド</param>
+            <param name="redoMethod">Redo が実行されるときに呼び出されるメソッド</param>
+            <param name="target">操作によって影響を受けるオブジェクトを表すパラメーター (オプション)。</param>
+            <remarks>
+            <p class="body">このオーバーロードは、Undo 操作が実行中のときには <paramref name="undoMethod"/> を実行し、Redo 操作が実行中のときには <paramref name="redoMethod"/>を実行する UndoUnit を作成します。この操作が成功する (つまりメソッドが true を返す) 場合、UndoUnit はそれ自体を履歴に追加します。</p>
+            <p class="note"><b>注:</b> 明示的な記述が渡されるため、文字列は、元に戻すおよびやり直しの両方の操作に適用されます。たとえば、「Enable Bold」/「Disable Bold」の代わりに「Bold」または「Toggle Bold」を使用する場合もあります。これは、やり直しスタックに対して変更が作成されている場合、前者は正しくない可能性があるためです。コンテキストに固有の文字列を使用したい場合、<see cref="P:Infragistics.Undo.UndoManager.IsPerformingRedo"/> プロパティを評価することによって、提供する記述を決定できます。</p>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">'undoMethod' パラメーターと 'redoMethod' パラメーターは null にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddChange(System.String,System.String,System.Action,System.Action,System.Object)">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> を履歴に追加します。</summary>
+            <param name="description">トランザクションの一般記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <param name="undoMethod">Undo が実行されるときに呼び出されるメソッド</param>
+            <param name="redoMethod">Redo が実行されるときに呼び出されるメソッド</param>
+            <param name="target">操作によって影響を受けるオブジェクトを表すパラメーター (オプション)。</param>
+            <remarks>
+            <p class="body">このオーバーロードは、Undo 操作が実行中のときには <paramref name="undoMethod"/> を実行し、Redo 操作が実行中のときには <paramref name="redoMethod"/>を実行する UndoUnit を作成します。</p>
+            <p class="note"><b>注:</b> 明示的な記述が渡されるため、文字列は、元に戻すおよびやり直しの両方の操作に適用されます。たとえば、「Enable Bold」/「Disable Bold」の代わりに「Bold」または「Toggle Bold」を使用する場合もあります。これは、やり直しスタックに対して変更が作成されている場合、前者は正しくない可能性があるためです。コンテキストに固有の文字列を使用したい場合、<see cref="P:Infragistics.Undo.UndoManager.IsPerformingRedo"/> プロパティを評価することによって、提供する記述を決定できます。</p>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">'undoMethod' パラメーターと 'redoMethod' パラメーターは null にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.ClearHistory">
+            <summary>元に戻す/やり直すの履歴をクリアします。</summary>
+            <remarks>
+            <p class="note"><b>注:</b> このメソッドは現在のオープンな <see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> に影響しません (存在する場合)。そのトランザクションを中止したい場合、その <see cref="M:Infragistics.Undo.UndoTransaction.Commit"/> メソッドまたは <see cref="M:Infragistics.Undo.UndoTransaction.Rollback"/> メソッドを呼び出します。</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.ExecuteInTransaction(System.String,System.String,System.Action)">
+            <summary><see cref="T:Infragistics.Undo.UndoTransaction"/> 内で指定されたアクションを実行します</summary>
+            <param name="description">トランザクションの記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <param name="action">トランザクション内で呼び出されるアクション</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.ExecuteInTransaction(Infragistics.Undo.UndoTransaction,System.Action)">
+            <summary><see cref="T:Infragistics.Undo.UndoTransaction"/> 内で指定されたアクションを実行します</summary>
+            <param name="transaction">実行されるカスタム トランザクション</param>
+            <param name="action">トランザクション内で呼び出されるアクション</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.ForEach(System.Action{Infragistics.Undo.UndoUnit})">
+            <summary>元に戻すおよびやり直す履歴内の、各 <see cref="T:Infragistics.Undo.UndoUnit"/> で指定されたアクションを実行します。</summary>
+            <param name="action">各項目に対して呼び出すアクション。</param>
+            <remarks>
+            <p class="body">ForEach メソッドは、<see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/>、<see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> および <see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> 内にあるすべての項目で指定したアクションを呼び出します(現在開いているトランザクションがある場合)。</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.PreventMerge">
+            <summary>記録される次の <see cref="T:Infragistics.Undo.UndoUnit"/> が、<see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> の最後の操作との結合を許可されていないことを確認するために使用されます。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.Redo(System.Int32)">
+            <summary>現在の履歴から、1 つ以上のやり直し操作を実行します。</summary>
+            <param name="redoCount">やり直し履歴内の実行する操作の数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="redoCount"/> は 1 以上である必要があります</exception>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.RemoveAll(System.Func{Infragistics.Undo.UndoUnit,System.Boolean},System.Boolean)">
+            <summary>一致する全ての <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを <see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> および <see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> コレクションから削除します。</summary>
+            <param name="match">それを削除するかどうかを決定するための、各 <see cref="T:Infragistics.Undo.UndoUnit"/> と共に呼び出すデリゲート。</param>
+            <param name="includeRootTransaction">このメソッドは現在のオープンな <see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> に影響するかどうかを示します (存在する場合)。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.Resume">
+            <summary>履歴内の <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスの記録を再開します。</summary>
+            <remarks>
+            <p class="body"><see cref="M:Infragistics.Undo.UndoManager.Suspend"/> メソッドは、元に戻す操作の記録を一時的に回避するために使用することを意図されています。これは、エンドユーザーが操作する前にオブジェクト/コレクションを初期化するときに役立つことがあります。中断を削除するために Resume メソッドを呼び出す必要があり、また Suspend メソッドの呼び出し回数と同じ回数呼び出す必要があります。</p>
+            <p class="note">中断中、<see cref="M:Infragistics.Undo.UndoManager.AddChange(Infragistics.Undo.UndoUnit)"/> に対する呼び出しは無視されます。また、<see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> または <see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> に対する呼び出しは例外になります。</p>
+            </remarks>
+            <seealso cref="M:Infragistics.Undo.UndoManager.Suspend"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.IsSuspended"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.StartTransaction(System.String,System.String)">
+            <summary>1 つ以上の <see cref="T:Infragistics.Undo.UndoUnit"/> アクションをグループ化する新しいトランザクションを開始するために使用します。</summary>
+            <param name="description">トランザクションの一般記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <returns>作成されたトランザクション。</returns>
+            <remarks>
+            <p class="body">トランザクションを使用して、元に戻す/やり直し履歴内で、1 つ以上の <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを 1 つの項目にグループ化します。StartTransaction メソッドを使用して、新しいトランザクションを開始します。トランザクションが開始していない、または全てのトランザクションが閉じている場合、<see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> を通して公開される、新しいルート レベルのトランザクションが作成されます。トランザクションが既に開始しており、そのため RootTransaction が非 null を返す場合、新しいトランザクションは、その <see cref="T:Infragistics.Undo.UndoTransaction"/> 内のリーフ オープン トランザクションのネスト化されたトランザクションになります。メソッドは新しく開始されたトランザクションを返します。</p>
+            <p class="note"><b>注:</b> トランザクションが開いている間は <see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> および <see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> メソッドを呼び出すことはできませんが、元に戻す/やり直し操作の実行中にトランザクションを作成し、複数の操作を 1 つのユニットにまとめることができます。</p>
+            </remarks>
+            <seealso cref="P:Infragistics.Undo.UndoManager.RootTransaction"/>
+            <seealso cref="P:Infragistics.Undo.UndoTransaction.OpenTransaction"/>
+            <seealso cref="M:Infragistics.Undo.UndoUnitFactory.CreateTransaction(System.String,System.String)"/>
+            <seealso cref="T:Infragistics.Undo.UndoTransaction"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.StartTransaction(Infragistics.Undo.UndoTransaction)">
+            <summary>1 つ以上の <see cref="T:Infragistics.Undo.UndoUnit"/> アクションをグループ化する新しいトランザクションを開始するために使用します。</summary>
+            <param name="transaction">使用する新しいトランザクション インスタンス。</param>
+            <returns>作成されたトランザクション。</returns>
+            <remarks>
+            <p class="body">トランザクションを使用して、元に戻す/やり直し履歴内で、1 つ以上の <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを 1 つの項目にグループ化します。StartTransaction メソッドを使用して、新しいトランザクションを開始します。トランザクションが開始していない、または全てのトランザクションが閉じている場合、<see cref="P:Infragistics.Undo.UndoManager.RootTransaction"/> を通して公開される、新しいルート レベルのトランザクションが作成されます。トランザクションが既に開始しており、そのため RootTransaction が非 null を返す場合、新しいトランザクションは、その <see cref="T:Infragistics.Undo.UndoTransaction"/> 内のリーフ オープン トランザクションのネスト化されたトランザクションになります。メソッドは新しく開始されたトランザクションを返します。</p>
+            <p class="note"><b>注:</b> トランザクションが開いている間は <see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> および <see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> メソッドを呼び出すことはできませんが、元に戻す/やり直し操作の実行中にトランザクションを作成し、複数の操作を 1 つのユニットにまとめることができます。</p>
+            </remarks>
+            <seealso cref="P:Infragistics.Undo.UndoManager.RootTransaction"/>
+            <seealso cref="M:Infragistics.Undo.UndoManager.StartTransaction(System.String,System.String)"/>
+            <seealso cref="P:Infragistics.Undo.UndoTransaction.OpenTransaction"/>
+            <seealso cref="T:Infragistics.Undo.UndoTransaction"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.Suspend">
+            <summary>履歴内の <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスの記録を中断します。</summary>
+            <remarks>
+            <p class="body">Suspend メソッドは、元に戻す操作の記録を一時的に回避するために使用することを意図されています。これは、エンドユーザーが操作する前にオブジェクト/コレクションを初期化するときに役立つことがあります。中断を削除するためには <see cref="M:Infragistics.Undo.UndoManager.Resume"/> メソッドを呼び出す必要があり、また Suspend メソッドの呼び出し回数と同じ回数呼び出す必要があります。</p>
+            <p class="note">中断中、<see cref="M:Infragistics.Undo.UndoManager.AddChange(Infragistics.Undo.UndoUnit)"/> に対する呼び出しは無視されます。また、<see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> または <see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> に対する呼び出しは例外になります。</p>
+            </remarks>
+            <seealso cref="M:Infragistics.Undo.UndoManager.Resume"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.IsSuspended"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.Undo(System.Int32)">
+            <summary>現在の履歴から、1 つ以上の元に戻す操作を実行します。</summary>
+            <param name="undoCount">元に戻す履歴内の、実行する操作の数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="undoCount"/> は 1 以上である必要があります</exception>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedEventArgs,System.String)">
+            <summary>指定したコレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="changeArgs">コレクションに対して行われた変更を記述するオブジェクト。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedAction,``0,System.Int32,System.String)">
+            <summary>指定した追加/削除コレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">発生した操作のタイプを示す「追加」または「削除」</param>
+            <param name="changedItem">追加または削除された項目</param>
+            <param name="index">追加操作の新しい項目のインデックス、または削除操作に対して項目が存在したインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedAction,``0[],System.Int32,System.String)">
+            <summary>指定した追加/削除コレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">発生した操作のタイプを示す「追加」または「削除」</param>
+            <param name="items">追加または削除された項目</param>
+            <param name="index">追加操作の新しい項目のインデックス、または削除操作に対して項目が存在したインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},``0[],System.String)">
+            <summary>コレクションのコンテンツを置換するコレクションの変更に対して、<see cref="T:Infragistics.Undo.UndoUnit"/> を元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="items">操作が元に戻されたときに復元する項目</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},``0,``0,System.Int32,System.String)">
+            <summary>指定された置換コレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="oldItem">置換された項目</param>
+            <param name="newItem"><paramref name="oldItem"/> に対する置換であった項目</param>
+            <param name="index">置換された項目のインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddCollectionChange``1(System.Collections.Generic.ICollection{``0},``0,System.Int32,System.Int32,System.String)">
+            <summary>指定された置換コレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TItem">項目のタイプ </typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="item">移動された項目。</param>
+            <param name="oldIndex">項目の以前のインデックス。</param>
+            <param name="newIndex">項目の新しいインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddPropertyChange``2(``0,System.Linq.Expressions.Expression{System.Func{``1}},``1,``1,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>指定されたプロパティの値の変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="getter">変更された <typeparamref name="TOwner"/> のプロパティの式</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="preventMerge">結合が許可される場合に、プロパティの変更が、元に戻すスタックの一番上のエントリと結合されないようにするかどうかを決定するために使用されます。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの名前。</param>
+            <seealso cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddPropertyChange``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,``1,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>指定されたプロパティの値の変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="getter">変更されたプロパティの式</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="preventMerge">結合が許可される場合に、プロパティの変更が、元に戻すスタックの一番上のエントリと結合されないようにするかどうかを決定するために使用されます。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの名前。</param>
+            <seealso cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddPropertyChange``2(``0,System.String,``1,``1,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>指定されたプロパティの値の変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を、元に戻す履歴に追加します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="propertyName">変更されたパブリック プロパティの文字列名。これを使用して、操作が元に戻されたときに影響を受けるプロパティの PropertyInfo を見つけます。</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="preventMerge">結合が許可される場合に、プロパティの変更が、元に戻すスタックの一番上のエントリと結合されないようにするかどうかを決定するために使用されます。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの名前。</param>
+            <seealso cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.FromReference(System.Object)">
+            <summary>指定されたオブジェクトに登録された UndoManager インスタンスを取得するために使用されます。</summary>
+            <param name="reference"><seealso cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/> メソッドを使用して、指定された UndoManager に登録されたオブジェクト。</param>
+            <returns>指定した参照に登録された <see cref="T:Infragistics.Undo.UndoManager"/>。</returns>
+            <see cref="M:Infragistics.Undo.UndoManager.UnregisterReference(System.Object)"/>
+            <see cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)">
+            <summary>オブジェクトを指定された <see cref="T:Infragistics.Undo.UndoManager"/> に関連付けるために使用します</summary>
+            <remarks>
+            <p class="body">オブジェクトを UndoManager に登録すると、元に戻す操作が登録される UndoManager を取得するために使用される静的メソッドに、オブジェクトへの参照を渡すことができます。これによって、UndoManager への参照を直接保存する必要を排除することができます。</p>
+            </remarks>
+            <param name="reference">この UndoManager インスタンスを関連づけるオブジェクト</param>
+            <see cref="M:Infragistics.Undo.UndoManager.UnregisterReference(System.Object)"/>
+            <see cref="M:Infragistics.Undo.UndoManager.FromReference(System.Object)"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.UnregisterReference(System.Object)">
+            <summary><see cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/> メソッド経由でこの UndoManager インスタンスに登録されたオブジェクトの登録を削除するために使用します。</summary>
+            <param name="reference">この UndoManager インスタンスに以前登録されたオブジェクト</param>
+            <see cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/>
+            <see cref="M:Infragistics.Undo.UndoManager.FromReference(System.Object)"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.AddPropertyChange(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>指定されたプロパティの値の変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を、元に戻す履歴に追加します。</summary>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="propertyChangedArgs">古い値と新しい値を含む DependencyPropertyChangedEventArgs。</param>
+            <param name="preventMerge">結合が許可される場合に、プロパティの変更が、元に戻すスタックの一番上のエントリと結合されないようにするかどうかを決定するために使用されます。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの名前。</param>
+            <remarks>
+            <p class="note"><b>注:</b> Silverlight では、DependencyProperty の名前を入手できない場合は、デフォルトの記述が適切に提供されない場合があります。</p>
+            </remarks>
+            <seealso cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+            <returns>追加された UndoUnit を返します。またはこれが追加されなかった場合は null を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.RegisterResources(System.String,System.Reflection.Assembly)">
+            <summary>コントロールがリソースをプルする追加の Resx を追加します。</summary>
+            <param name="name">使用されるリソースを含む組み込み resx ファイルの名前。</param>
+            <param name="assembly">resx ファイルが埋め込まれるアセンブリ。</param>
+            <remarks>ファイルの拡張子を含まないでください。ただし、アセンブリのデフォルト名前空間でプレフィックスしてください。</remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManager.UnregisterResources(System.String)">
+            <summary>以前登録した resx ファイルを削除します。</summary>
+            <param name="name">登録に使用された埋め込み resx ファイルの名前。</param>
+            <remarks>注：これは、すでにビューに存在し、文字列を表示しているコントロールには影響ありません。作成された新規コントロールにのみ影響を与えます。</remarks>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.AllowMerging">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)"/> メソッドを使用して変更を結合できるかどうかを示すブール値を返すか、設定します。</summary>
+            <remarks>
+            <p class="note"><b>注:</b> <see cref="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)"/> 2 つ以上の新しい UndoUnits が履歴に追加された場合にのみ、メソッドは呼び出されます。元に戻すまたはやり直し操作が実行される場合、そのメソッドは、次の非元に戻す/やり直し操作が実行されるまで呼び出されません。</p>
+            </remarks>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.CanRedo">
+            <summary>やり直し可能な操作があるかどうかを示すブール値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.CanUndo">
+            <summary>元に戻すことができる操作があるかどうかを示すブール値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.CurrentHistoryItem">
+            <summary>実行している <see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> または <see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> の <see cref="T:Infragistics.Undo.UndoHistoryItem"/> を返します。元に戻す / やり直し操作が実行していない場合、null を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.CurrentTransaction">
+            <summary>現在のオープン リーフ <see cref="T:Infragistics.Undo.UndoTransaction"/> を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.IsPerformingRedo">
+            <summary>マネージャーがやり直し操作を実行しているかどうかを示すブール値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.IsPerformingRollback">
+            <summary><see cref="T:Infragistics.Undo.UndoManager"/> が <see cref="T:Infragistics.Undo.UndoTransaction"/> のロールバックを実行しているかどうかを示すブール値を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.IsPerformingUndo">
+            <summary>マネージャーが元に戻す操作を実行しているかどうかを示すブール値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.IsSuspended">
+            <summary>履歴内の <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスのレコードが、<see cref="M:Infragistics.Undo.UndoManager.Suspend"/> メソッドを使用して中断されているかどうかを示すブール値を返します。</summary>
+            <seealso cref="M:Infragistics.Undo.UndoManager.Suspend"/>
+            <seealso cref="M:Infragistics.Undo.UndoManager.Resume"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.MergeTimeout">
+            <summary>最後の操作以来の、<see cref="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)"/> が許可される回数を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.RedoHistory">
+            <summary>やり直し履歴内の項目の読み取り専用のコレクションを返します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoManager.TopRedoHistoryItem"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.CanRedo"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoHistory"/>
+            <seealso cref="T:Infragistics.Undo.UndoHistoryItem"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.RootTransaction">
+            <summary>最も外側の現在の開いているトランザクションを返します。または現在開いているトランザクションがない場合は null を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.TopRedoHistoryItem">
+            <summary><see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> の一番上の次の項目を返します</summary>
+            <remarks>
+            <p>このプロパティは、<see cref="P:Infragistics.Undo.UndoManager.RedoHistory"/> スタックの一番上の <see cref="T:Infragistics.Undo.UndoHistoryItem"/> を返すため、RedoHistory[0] へのアクセスと同等です。このプロパティの主な使用事例は、出力ウィンドウの例外情報を避けるために、UI のやり直しボタンのツールチップの <see cref="P:Infragistics.Undo.UndoHistoryItem.ShortDescription"/> を表示するときなどのバインディングです。</p>
+            </remarks>
+            <seealso cref="P:Infragistics.Undo.UndoManager.TopUndoHistoryItem"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.RedoHistory"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.TopUndoHistoryItem">
+            <summary><see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> の一番上の次の項目を返します</summary>
+            <remarks>
+            <p>このプロパティは、<see cref="P:Infragistics.Undo.UndoManager.UndoHistory"/> スタックの一番上の <see cref="T:Infragistics.Undo.UndoHistoryItem"/> を返すため、UndoHistory[0] へのアクセスと同等です。このプロパティの主な使用事例は、出力ウィンドウの例外情報を避けるために、UI の元に戻すボタンのツールチップの <see cref="P:Infragistics.Undo.UndoHistoryItem.ShortDescription"/> を表示するときなどのバインディングです。</p>
+            </remarks>
+            <seealso cref="P:Infragistics.Undo.UndoManager.TopRedoHistoryItem"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.UndoHistory"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.UndoLimit">
+            <summary>元に戻す/やり直し履歴で維持するための最大項目数を取得または設定します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.UndoHistory">
+            <summary>元に戻す履歴内の項目の読み取り専用のコレクションを返します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoManager.TopUndoHistoryItem"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.CanUndo"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.RedoHistory"/>
+            <seealso cref="T:Infragistics.Undo.UndoHistoryItem"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.Current">
+            <summary>UndoManager のスレッド静的な単一インスタンスを返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.UndoUnitFactory">
+            <summary>この <see cref="T:Infragistics.Undo.UndoManager"/> のデフォルトの <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを作成するために使用するオブジェクトを返すか、設定します</summary>
+            <see cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactoryResolved"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManager.UndoUnitFactoryResolved">
+            <summary>UndoUnit ユニットを作成するために UndoManager が使用する <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/> を返す、読み取り専用のプロパティ。</summary>
+            <see cref="T:Infragistics.Undo.UndoUnitFactory"/>
+            <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+        </member>
+        <member name="T:Infragistics.Undo.UndoMergeContext">
+            <summary><see cref="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)"/> メソッドに対する、可能性のある結合操作に関する情報を提供するために使用します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoMergeContext.#ctor(Infragistics.Undo.UndoManager,Infragistics.Undo.UndoUnit)">
+            <summary>新しい <see cref="P:Infragistics.Undo.UndoMergeContext.UndoManager"/> を初期化します。</summary>
+            <param name="undoManager">ユニットが追加されている UndoManager</param>
+            <param name="unitBeingAdded">追加されているユニット</param>
+        </member>
+        <member name="P:Infragistics.Undo.UndoMergeContext.UndoManager">
+            <summary>UndoUnit が追加されている <see cref="P:Infragistics.Undo.UndoMergeContext.UndoManager"/> を返します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoMergeContext.UnitBeingAdded"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoMergeContext.UnitBeingAdded">
+            <summary>追加されている <see cref="T:Infragistics.Undo.UndoUnit"/> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.CustomUndoUnit">
+            <summary>実行操作を実行するデリゲートを受け取るカスタム <see cref="T:Infragistics.Undo.UndoUnit"/>。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoUnit">
+            <summary>元に戻す/やり直し操作の基本クラス。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>操作が実行された場合は True を返します。それ以外は false を返します。いずれの場合も、オブジェクトは元に戻すスタックから削除されました。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnit.ForEach(System.Action{Infragistics.Undo.UndoUnit})">
+            <summary>子孫でアクションを呼び出すために使用されます。</summary>
+            <param name="action">子孫で呼び出すアクション</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnit.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)">
+            <summary>目的が元に戻すまたはやり直し操作であるかどうかに基づいて、アクションの文字列表現を返します。</summary>
+            <param name="itemType">記述がリクエストされている履歴のタイプ。</param>
+            <param name="detailed">詳細記述を返すかどうかを示すブール値。たとえば、false の場合は「Typing」を返すことができますが、詳細に関しては「Typing 'qwerty」を返すことができます。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnit.Merge(Infragistics.Undo.UndoMergeContext)">
+            <summary>複数の連続した元に戻すユニットを、単一操作に結合できるようにするために使用されます。</summary>
+            <param name="mergeInfo">結合操作の評価のために、ユニットに関する情報を提供します</param>
+            <returns>ユニットが結合された方法を特定するために使用される列挙体を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnit.RemoveAll(System.Func{Infragistics.Undo.UndoUnit,System.Boolean})">
+            <summary>一致する子孫を削除し、ユニットを削除するかどうかを示すために使用されます。</summary>
+            <param name="match">子孫ユニットを評価するためのルーチン。これは、その RemoveAll が呼び出されている UndoUnit に対して実行してはいけません。</param>
+            <returns>項目が削除される場合は true、そうでない場合は false を返します。</returns>
+        </member>
+        <member name="P:Infragistics.Undo.UndoUnit.Target">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> によって影響を受けるターゲット オブジェクトを返します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.CustomUndoUnit.#ctor(System.String,System.String,System.Func{Infragistics.Undo.UndoExecuteContext,System.Boolean},System.Object)">
+            <summary>元に戻す/やり直し履歴内の操作が実行されるときに、指定されたメソッドを呼び出す新しい <see cref="T:Infragistics.Undo.CustomUndoUnit"/> を初期化します。</summary>
+            <param name="description">トランザクションの記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <param name="executeMethod">呼び出されるメソッド。メソッドは、操作が成功したかどうかを示すブール値を返します。</param>
+            <param name="target">関数のターゲットであるオブジェクト。この情報は、<see cref="P:Infragistics.Undo.CustomUndoUnit.Target"/> プロパティを介して公開されます。</param>
+            <exception cref="T:System.ArgumentNullException">executeMethod パラメーターは null になることはできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CustomUndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>操作が実行された場合は True を返します。それ以外は false を返します。いずれの場合も、オブジェクトは元に戻すスタックから削除されました。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.CustomUndoUnit.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)">
+            <summary>目的が元に戻すまたはやり直し操作であるかどうかに基づいて、アクションの文字列表現を返します。</summary>
+            <param name="itemType">記述がリクエストされている履歴のタイプ。</param>
+            <param name="detailed">詳細記述を返すかどうかを示すブール値。たとえば、false の場合は「Typing」を返すことができますが、詳細に関しては「Typing 'qwerty」を返すことができます。</param>
+        </member>
+        <member name="P:Infragistics.Undo.CustomUndoUnit.Target">
+            <summary><see cref="T:Infragistics.Undo.CustomUndoUnit"/> によって影響を受けるターゲット オブジェクトを返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoTransaction">
+            <summary>1 つ以上の <see cref="T:Infragistics.Undo.UndoUnit"/> を含むカスタム <see cref="T:Infragistics.Undo.UndoUnit"/></summary>
+            <seealso cref="M:Infragistics.Undo.UndoManager.StartTransaction(System.String,System.String)"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.CurrentTransaction"/>
+            <seealso cref="P:Infragistics.Undo.UndoManager.RootTransaction"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.#ctor(System.String,System.String)">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoTransaction"/> を初期化します。</summary>
+            <param name="description">トランザクションの記述、またはデフォルトを提供する場合は null。</param>
+            <param name="detailedDescription">トランザクションの詳細記述、またはデフォルトを提供する場合は null。</param>
+            <remarks>
+            <p class="note">トランザクションは通常 <see cref="M:Infragistics.Undo.UndoManager.StartTransaction(System.String,System.String)"/> を使用して作成されます。派生トランザクション クラスが必要とされる場合、コントロールが公開されます。この場合、<see cref="M:Infragistics.Undo.UndoUnitFactory.CreateTransaction(System.String,System.String)"/> メソッドがオーバーライドされてから、そのファクトリ クラスのインスタンスが <see cref="P:Infragistics.Undo.UndoUnitFactory.Current"/> または <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/> プロパティに設定される派生 <see cref="T:Infragistics.Undo.UndoUnitFactory"/> が必要になります。</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary><see cref="P:Infragistics.Undo.UndoTransaction.Units"/> 内の全ての項目の関連付けられたアクションを実行するために使用されます</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>1 つ以上の <see cref="P:Infragistics.Undo.UndoTransaction.Units"/> の実行が成功した場合は true を返します。それ以外は false を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.ForEach(System.Action{Infragistics.Undo.UndoUnit})">
+            <summary>子孫でアクションを呼び出すために使用されます。</summary>
+            <param name="action">子孫で呼び出すアクション</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)">
+            <summary>目的が元に戻すまたはやり直し操作であるかどうかに基づいて、アクションの文字列表現を返します。</summary>
+            <param name="itemType">記述がリクエストされている履歴のタイプ。</param>
+            <param name="detailed">詳細記述を返すかどうかを示すブール値。たとえば、false の場合は「Typing」を返すことができますが、詳細に関しては「Typing 'qwerty」を返すことができます。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Merge(Infragistics.Undo.UndoMergeContext)">
+            <summary>複数の連続した元に戻すユニットを、単一操作に結合できるようにするために使用されます。</summary>
+            <param name="mergeInfo">結合操作の評価のために、ユニットに関する情報を提供します</param>
+            <returns>ユニットが結合された方法を特定するために使用される列挙体を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.RemoveAll(System.Func{Infragistics.Undo.UndoUnit,System.Boolean})">
+            <summary>一致する子孫を削除するために使用されます。</summary>
+            <param name="match">子孫ユニットを評価するためのルーチン。これは、その RemoveAll が呼び出されている UndoUnit に対して実行してはいけません。</param>
+            <returns>項目を削除する場合は true を返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Close(Infragistics.Undo.UndoTransactionCloseAction)">
+            <summary>ユニットをコミットする、またはキャンセルするグループを閉じるために使用されます。</summary>
+            <param name="closeAction">取るアクションを示します</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Open(Infragistics.Undo.IUndoTransactionOwner)">
+            <summary>グループが開いている最中に呼び出されます。</summary>
+            <param name="parent">グループの親。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Commit">
+            <summary>トランザクションをコミットおよびクローズします</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.Rollback">
+            <summary>トランザクションを閉じ、<see cref="P:Infragistics.Undo.UndoTransaction.Units"/> を実行し、親からそれを削除します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoTransaction.CreateExecuteTransaction(Infragistics.Undo.UndoExecuteContext)">
+            <summary><see cref="P:Infragistics.Undo.UndoTransaction.Units"/> を実行するときに開始するトランザクションを作成します。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>現在の実行操作を含むトランザクションを開始するための <see cref="M:Infragistics.Undo.UndoManager.StartTransaction(Infragistics.Undo.UndoTransaction)"/> と使用される <see cref="T:Infragistics.Undo.UndoTransaction"/> または派生クラスの新しいインスタンス。</returns>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.Target">
+            <summary><see cref="T:Infragistics.Undo.UndoTransaction"/> は <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスのグループであり、複数のターゲットに影響する可能性があるため、null を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.IsClosed">
+            <summary>トランザクションが閉じている/終了しているかどうかを示すブール値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.OpenTransaction">
+            <summary>現在開いている子トランザクションを返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.Parent">
+            <summary>親/含む <see cref="T:Infragistics.Undo.UndoTransaction"/> を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.Units">
+            <summary>子ユニットの読み取り専用コレクションを返します。</summary>
+            <remarks>
+            <p class="body"><see cref="M:Infragistics.Undo.UndoManager.AddChange(Infragistics.Undo.UndoUnit)"/> メソッドを使用して、ユニットがグループに追加されます。</p>
+            </remarks>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.Description">
+            <summary>トランザクションのコンストラクターに提供される説明を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.UndoTransaction.DetailedDescription">
+            <summary>トランザクションのコンストラクターに提供される詳細説明を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.CollectionChangeUndoUnit`1">
+            <summary><see cref="T:System.Collections.Generic.ICollection`1"/> への変更を元に戻すためのカスタム <see cref="T:Infragistics.Undo.UndoUnit"/>。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},System.Collections.Specialized.NotifyCollectionChangedEventArgs,System.String)">
+            <summary>指定した <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> に基づく新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="changedArgs">コレクションに対して行われた変更を記述するオブジェクト。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> および <paramref name="changedArgs"/> は null になることはできません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+            <exception cref="T:System.InvalidOperationException"><see cref="P:System.Collections.Specialized.NotifyCollectionChangedEventArgs.Action"/> は「リセット」にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},System.Collections.Specialized.NotifyCollectionChangedAction,`0,System.Int32,System.String)">
+            <summary>特定の項目の追加または削除のために、新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">項目が追加または削除されたかどうかを示すため、「Add」または「Remove」のいずれかである必要があります。</param>
+            <param name="changedItem">追加または削除された項目。</param>
+            <param name="index">Add に対して項目が挿入されたインデックス、または Remove <paramref name="action"/> に対する項目の古いインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> は null であってはいけません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="action"/> は「Add」または「Remove」である必要があります。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},System.Collections.Specialized.NotifyCollectionChangedAction,`0[],System.Int32,System.String)">
+            <summary>複数の項目の追加または削除のために、新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">項目が追加または削除されたかどうかを示すため、「Add」または「Remove」のいずれかである必要があります。</param>
+            <param name="items">追加または削除された項目。</param>
+            <param name="index">Add に対して項目が挿入されたインデックス、または Remove <paramref name="action"/> に対する項目の古いインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> は null であってはいけません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="action"/> は「Add」または「Remove」である必要があります。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},`0[],System.String)">
+            <summary>指定されたコレクションのリセットのために、新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="items">コレクション内の以前の古い項目。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> は null であってはいけません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},`0,`0,System.Int32,System.String)">
+            <summary>特定の項目の置換のために、新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="oldItem">削除/置換された項目。</param>
+            <param name="newItem"><paramref name="oldItem"/> に対する置換として追加された項目。</param>
+            <param name="index">置換のインデックスでもある、置換された項目のインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> は null であってはいけません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.#ctor(System.Collections.Generic.ICollection{`0},`0,System.Int32,System.Int32,System.String)">
+            <summary>特定の項目の移動のために、新しい <see cref="T:Infragistics.Undo.CollectionChangeUndoUnit`1"/> を初期化します。</summary>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="item">移動された項目。</param>
+            <param name="oldIndex">項目の以前のインデックス。</param>
+            <param name="newIndex">項目の新しいインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection"/> は null であってはいけません。</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="collection"/> は読み取り専用にできません。</exception>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+            <returns>操作が実行された場合は True を返します。それ以外は false を返します。いずれの場合も、オブジェクトは元に戻すスタックから削除されました。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)">
+            <summary>目的が元に戻すまたはやり直し操作であるかどうかに基づいて、アクションの文字列表現を返します。</summary>
+            <param name="itemType">記述がリクエストされている履歴のタイプ。</param>
+            <param name="detailed">詳細記述を返すかどうかを示すブール値。たとえば、false の場合は「Typing」を返すことができますが、詳細に関しては「Typing 'qwerty」を返すことができます。</param>
+        </member>
+        <member name="M:Infragistics.Undo.CollectionChangeUndoUnit`1.Merge(Infragistics.Undo.UndoMergeContext)">
+            <summary>複数の連続した元に戻すユニットを、単一操作に結合できるようにするために使用されます。</summary>
+            <param name="mergeInfo">結合操作の評価のために、ユニットに関する情報を提供します</param>
+            <returns>ユニットが結合された方法を特定するために使用される列挙体を返します。</returns>
+        </member>
+        <member name="P:Infragistics.Undo.CollectionChangeUndoUnit`1.Target">
+            <summary>ターゲット <see cref="P:Infragistics.Undo.CollectionChangeUndoUnit`1.Collection"/> を返します</summary>
+        </member>
+        <member name="P:Infragistics.Undo.CollectionChangeUndoUnit`1.Collection">
+            <summary>ユニットが実行される場合に更新される、関連付けられたコレクションを返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.PropertyChangeUndoUnit`2">
+            <summary>プロパティの変更結果を元に戻すために使用される、カスタムの元に戻すユニット。</summary>
+            <typeparam name="TTarget">プロパティが変更されたオブジェクトのタイプ。</typeparam>
+            <typeparam name="TProperty">値が変更されたプロパティのタイプ。</typeparam>
+        </member>
+        <member name="T:Infragistics.Undo.PropertyChangeUndoUnitBase">
+            <summary>単一プロパティの値を変更する <see cref="T:Infragistics.Undo.UndoUnit"/> の基本クラス。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.PropertyChangeUndoUnitBase.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.PropertyChangeUndoUnitBase.GetDescription(Infragistics.Undo.UndoHistoryItemType,System.Boolean)">
+            <summary>目的が元に戻すまたはやり直し操作であるかどうかに基づいて、アクションの文字列表現を返します。</summary>
+            <param name="itemType">記述がリクエストされている履歴のタイプ。</param>
+            <param name="detailed">詳細記述を返すかどうかを示すブール値。たとえば、false の場合は「Typing」を返すことができますが、詳細に関しては「Typing 'qwerty」を返すことができます。</param>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnitBase.NewValue">
+            <summary>オブジェクトに設定された新しい値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnitBase.OldValue">
+            <summary>復元されるオブジェクトの元の値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnitBase.PropertyName">
+            <summary>変更されるプロパティ名を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnitBase.PropertyDisplayName">
+            <summary>エンドユーザーに表示するプロパティ名を表すオプションの文字列。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnitBase.TargetDisplayName">
+            <summary>エンドユーザーに表示するターゲットを表すオプションの文字列。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.PropertyChangeUndoUnit`2.#ctor(`0,`1,`1,System.Action{`0,`1},System.String,System.String,System.String)">
+            <summary>新しい <see cref="T:Infragistics.Undo.PropertyChangeUndoUnit`2"/> を初期化します。</summary>
+            <param name="target">プロパティが変更されたオブジェクト。</param>
+            <param name="oldValue">元に戻す操作が実行されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="setter">元に戻す操作の実行に使用するデリゲート</param>
+            <param name="memberName">関連付けられたプロパティの名前</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前、または <paramref name="memberName"/> を使用する場合は null。</param>
+            <param name="targetDisplayName">エンドユーザーに表示するターゲットを表す文字列、または <paramref name="target"/> 自体から文字列表現を取得する場合は null。</param>
+        </member>
+        <member name="M:Infragistics.Undo.PropertyChangeUndoUnit`2.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+        </member>
+        <member name="M:Infragistics.Undo.PropertyChangeUndoUnit`2.Merge(Infragistics.Undo.UndoMergeContext)">
+            <summary>複数の連続した元に戻すユニットを、単一操作に結合できるようにするために使用されます。</summary>
+            <param name="mergeInfo">結合操作の評価のために、ユニットに関する情報を提供します</param>
+            <returns>ユニットが結合された方法を特定するために使用される列挙体を返します。</returns>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.NewValue">
+            <summary>オブジェクトに設定された新しい値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.OldValue">
+            <summary>復元されるオブジェクトの元の値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.PropertyDisplayName">
+            <summary>エンドユーザーに表示するプロパティ名を表すオプションの文字列。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.PropertyName">
+            <summary>変更されるプロパティ名を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.Target">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> によって影響を受けるターゲット オブジェクトを返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.TargetDisplayName">
+            <summary>エンドユーザーに表示するターゲットを表すオプションの文字列。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.PropertyChangeUndoUnit`2.ActualTarget">
+            <summary>実行時にそのプロパティが復元されるオブジェクトを返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoUnitFactory">
+            <summary><see cref="T:Infragistics.Undo.UndoManager"/> で使用する共通 <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを作成するための Factory クラス</summary>
+            <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactory"/>
+            <see cref="P:Infragistics.Undo.UndoManager.UndoUnitFactoryResolved"/>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoUnitFactory"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateChange(System.String,System.String,System.Func{Infragistics.Undo.UndoExecuteContext,System.Boolean},System.Func{Infragistics.Undo.UndoExecuteContext,System.Boolean},System.Object)">
+            <summary>指定したメソッドの <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <param name="description">トランザクションの記述。</param>
+            <param name="detailedDescription">操作のより詳細な記述。</param>
+            <param name="undoMethod">Undo が実行されるときに呼び出されるメソッドメソッドは、操作が成功したかどうかを示すブール値を返します。</param>
+            <param name="redoMethod">Redo が実行されるときに呼び出されるメソッドメソッドは、操作が成功したかどうかを示すブール値を返します。</param>
+            <param name="target">関数のターゲットであるオブジェクト。この情報は、<see cref="P:Infragistics.Undo.UndoUnit.Target"/> プロパティを介して公開されます。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedEventArgs,System.String)">
+            <summary>指定された <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> に基づいてコレクションの変更の <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="changedArgs">コレクションに対して行われた変更を記述するオブジェクト。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedAction,``0,System.Int32,System.String)">
+            <summary>特定の項目の追加/削除操作の <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">発生した操作のタイプを示す「追加」または「削除」</param>
+            <param name="changedItem">追加または削除された項目</param>
+            <param name="index">追加操作の新しい項目のインデックス、または削除操作に対して項目が存在したインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},System.Collections.Specialized.NotifyCollectionChangedAction,``0[],System.Int32,System.String)">
+            <summary>複数項目の追加/削除操作の <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="action">発生した操作のタイプを示す「追加」または「削除」</param>
+            <param name="items">追加または削除された項目</param>
+            <param name="index">追加操作の新しい項目のインデックス、または削除操作に対して項目が存在したインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},``0[],System.String)">
+            <summary>コレクションのコンテンツ全体を置換するための <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="items">元に戻す操作時に、コレクションに復元する項目。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},``0,``0,System.Int32,System.String)">
+            <summary>特定の項目の置換操作の <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="oldItem">削除/置換された項目</param>
+            <param name="newItem"><paramref name="oldItem"/> に対する置換として追加された項目</param>
+            <param name="index">古い項目が存在し、新しい項目が追加された場所のインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateCollectionChange``1(System.Collections.Generic.ICollection{``0},``0,System.Int32,System.Int32,System.String)">
+            <summary>特定の項目の移動操作の <see cref="T:Infragistics.Undo.UndoUnit"/> を作成します。</summary>
+            <typeparam name="T">コレクションの項目のタイプ。</typeparam>
+            <param name="collection">変更されたコレクション。</param>
+            <param name="item">移動された項目。</param>
+            <param name="oldIndex">項目の以前のインデックス。</param>
+            <param name="newIndex">項目の新しいインデックス。</param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+            <returns>操作を元に戻すために使用できる <see cref="T:Infragistics.Undo.UndoUnit"/></returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreatePropertyChange``2(``0,System.Linq.Expressions.Expression{System.Func{``1}},``1,``1,System.String,System.String)">
+            <summary>指定したプロパティの変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を作成します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="getter">変更された <typeparamref name="TOwner"/> のプロパティの式</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの優先名。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの優先名。</param>
+            <returns>指定したプロパティ変更を元に戻すために使用できる undo unit を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreatePropertyChange``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,``1,System.String,System.String)">
+            <summary>指定したプロパティの変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を作成します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="getter">変更されたプロパティの式</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの優先名。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの優先名。</param>
+            <returns>指定したプロパティ変更を元に戻すために使用できる undo unit を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreatePropertyChange``2(``0,System.String,``1,``1,System.String,System.String)">
+            <summary>指定したプロパティの変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を作成します。</summary>
+            <typeparam name="TOwner">値が変更されたクラスのタイプ</typeparam>
+            <typeparam name="TProperty">変更されたプロパティのタイプ</typeparam>
+            <param name="owner">プロパティが変更されたインスタンス</param>
+            <param name="propertyName">変更されたパブリック プロパティの文字列名。これを使用して、操作が元に戻されたときに影響を受けるプロパティの PropertyInfo を見つけます。</param>
+            <param name="oldValue">アクションが元に戻されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの優先名。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの優先名。</param>
+            <returns>指定したプロパティ変更を元に戻すために使用できる undo unit を返します。</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreateTransaction(System.String,System.String)">
+            <summary><see cref="T:Infragistics.Undo.UndoTransaction"/> を作成します。</summary>
+            <param name="description">トランザクションの記述。</param>
+            <param name="detailedDescription">トランザクションの詳細記述。</param>
+            <returns>新しい <see cref="T:Infragistics.Undo.UndoTransaction"/> インスタンスを返します</returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoUnitFactory.CreatePropertyChange(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs,System.String,System.String)">
+            <summary>指定したプロパティの変更の <see cref="T:Infragistics.Undo.PropertyChangeUndoUnitBase"/> を作成します。</summary>
+            <param name="d">プロパティが変更されたインスタンス</param>
+            <param name="e">古い値と新しい値を含む DependencyPropertyChangedEventArgs。</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの優先名。これが指定されない場合にはプロパティの実際の名前が使用されます。</param>
+            <param name="typeDisplayName">エンドユーザーに表示する、プロパティが変更されているオブジェクトの優先名。</param>
+            <remarks>
+            <p class="note"><b>注:</b> Silverlight では、DependencyProperty の名前を入手できない場合は、デフォルトの記述が提供されない場合があります。</p>
+            </remarks>
+        </member>
+        <member name="P:Infragistics.Undo.UndoUnitFactory.Current">
+            <summary><see cref="T:Infragistics.Undo.UndoManager"/> で使用するための <see cref="T:Infragistics.Undo.UndoUnit"/> インスタンスを作成するために使用するデフォルトのファクトリを返します</summary>
+            <remarks>
+            <p class="note"><b>注:</b> このクラスは静的に保存されるため、スレッドセーフです。</p>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">プロパティは null 値に設定できません。</exception>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerCommandType">
+            <summary><see cref="T:Infragistics.Undo.UndoManager"/> インスタンスのコマンドを識別するために <see cref="T:Infragistics.Undo.UndoManagerCommandSource"/> が使用する列挙体。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoManagerCommandType.Undo">
+            <summary>元に戻す操作を実行します。パラメーターは、参照として登録されたオブジェクトになります (<see cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/> または <see cref="T:Infragistics.Undo.UndoManager"/> インスタンスを確認、または共有 <see cref="P:Infragistics.Undo.UndoManager.Current"/> で操作する場合は null)。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoManagerCommandType.Redo">
+            <summary>やり直し操作を実行します。パラメーターは、参照として登録されたオブジェクトになります (<see cref="M:Infragistics.Undo.UndoManager.RegisterReference(System.Object)"/> または <see cref="T:Infragistics.Undo.UndoManager"/> インスタンスを確認、または共有 <see cref="P:Infragistics.Undo.UndoManager.Current"/> で操作する場合は null)。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoManagerCommandType.UndoRedoHistoryItem">
+            <summary>HistoryItem に至るまで、および HistoryItem を含む、指定した <see cref="T:Infragistics.Undo.UndoHistoryItem"/> に対して元に戻すおよびやり直しを呼び出します。パラメーターは <see cref="T:Infragistics.Undo.UndoHistoryItem"/> インスタンスである必要があります。</summary>
+        </member>
+        <member name="F:Infragistics.Undo.UndoManagerCommandType.PreventMerge">
+            <summary>元に戻す/やり直し操作の一部ではない次の UndoUnit が実行されるまで、UndoUnits の結合を一時的に回避します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerCommandSource">
+            <summary><see cref="T:Infragistics.Undo.UndoManager"/> のコマンド ソース</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandSource.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerCommandSource"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandSource.ResolveCommand">
+            <summary><see cref="P:Infragistics.Undo.UndoManagerCommandSource.CommandType"/> プロパティの値に基づいて、関連付けられたアクションを実行する <see cref="T:System.Windows.Input.ICommand"/> を作成します。</summary>
+            <seealso cref="P:Infragistics.Undo.UndoManagerCommandSource.CommandType"/>
+        </member>
+        <member name="P:Infragistics.Undo.UndoManagerCommandSource.CommandType">
+            <summary>コマンド ソースがトリガーされたときに実行されるコマンドを識別するために使用する列挙体を返すか、設定します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerCommandBase">
+            <summary>パラメーターが参照または <see cref="T:Infragistics.Undo.UndoManager"/> になることができる、<see cref="T:Infragistics.Undo.UndoManager"/> のコマンドの基本クラス</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandBase.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerCommandBase"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandBase.CanExecute(System.Object)">
+            <summary>指定したパラメーターに基づいてコマンドを実行できるかどうかを示すブール値を返します</summary>
+            <param name="parameter">評価するパラメーター。元に戻すために、履歴内の項目数を示す整数になることができます。</param>
+            <returns>パラメーターの場合は true </returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandBase.Execute(System.Object)">
+            <summary>コマンドを実行するときに呼び出されます。</summary>
+            <param name="parameter">評価するパラメーター。<see cref="T:Infragistics.Undo.UndoHistoryItem"/> インスタンスになります。</param>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerCommandBase.Execute(Infragistics.Undo.UndoManager)">
+            <summary>コマンドに関連付けられたアクションするために使用します。</summary>
+            <param name="manager">操作が実行される、元に戻すマネージャー</param>
+            <returns>操作が実行された場合 true を返します。それ以外は false を返します。</returns>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerUndoCommand">
+            <summary><see cref="M:Infragistics.Undo.UndoManager.Undo(System.Int32)"/> メソッドを <see cref="T:Infragistics.Undo.UndoManager"/> で呼び出すためのカスタム コマンド</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerUndoCommand.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerUndoCommand"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerUndoCommand.Execute(Infragistics.Undo.UndoManager)">
+            <summary>コマンドに関連付けられたアクションするために使用します。</summary>
+            <param name="manager">操作が実行される、元に戻すマネージャー</param>
+            <returns>操作が実行された場合 true を返します。それ以外は false を返します。</returns>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerRedoCommand">
+            <summary><see cref="M:Infragistics.Undo.UndoManager.Redo(System.Int32)"/> メソッドを <see cref="T:Infragistics.Undo.UndoManager"/> で呼び出すためのカスタム コマンド</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerRedoCommand.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerRedoCommand"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerRedoCommand.Execute(Infragistics.Undo.UndoManager)">
+            <summary>コマンドに関連付けられたアクションするために使用します。</summary>
+            <param name="manager">操作が実行される、元に戻すマネージャー</param>
+            <returns>操作が実行された場合 true を返します。それ以外は false を返します。</returns>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerHistoryItemCommand">
+            <summary>特定の <see cref="T:Infragistics.Undo.UndoHistoryItem"/> を前提として <see cref="T:Infragistics.Undo.UndoManager"/> の元に戻す/やり直しを実行するために使用するカスタム コマンド</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerHistoryItemCommand.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerHistoryItemCommand"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerHistoryItemCommand.CanExecute(System.Object)">
+            <summary>指定したパラメーターに基づいてコマンドを実行できるかどうかを示すブール値を返します</summary>
+            <param name="parameter">評価するパラメーター。<see cref="T:Infragistics.Undo.UndoHistoryItem"/> インスタンスになります</param>
+            <returns>パラメーターの場合は true </returns>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerHistoryItemCommand.Execute(System.Object)">
+            <summary>コマンドを実行するときに呼び出されます。</summary>
+            <param name="parameter">評価するパラメーター。<see cref="T:Infragistics.Undo.UndoHistoryItem"/> インスタンスになります。</param>
+        </member>
+        <member name="T:Infragistics.Undo.UndoManagerPreventMergeCommand">
+            <summary><see cref="P:Infragistics.Undo.UndoManager.ShouldPreventMerge"/> メソッドを <see cref="T:Infragistics.Undo.UndoManager"/> で呼び出すためのカスタム コマンド</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerPreventMergeCommand.#ctor">
+            <summary>新しい <see cref="T:Infragistics.Undo.UndoManagerPreventMergeCommand"/> を初期化します。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.UndoManagerPreventMergeCommand.Execute(Infragistics.Undo.UndoManager)">
+            <summary>コマンドに関連付けられたアクションするために使用します。</summary>
+            <param name="manager">操作が実行される、元に戻すマネージャー</param>
+            <returns>操作が実行された場合 true を返します。それ以外は false を返します。</returns>
+        </member>
+        <member name="T:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1">
+            <summary>コレクションの変更通知の <see cref="P:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.UndoManager"/> への追加をサポートする、監視可能なコレクション</summary>
+            <typeparam name="T">コレクション内の項目のタイプ。</typeparam>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.#ctor(System.String)">
+            <summary><see cref="P:Infragistics.Undo.UndoManager.Current"/> に関連付けられた新しい <see cref="T:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1"/> を初期化します。</summary>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.#ctor(Infragistics.Undo.UndoManager,System.String)">
+            <summary>新しい <see cref="T:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1"/> を初期化します。</summary>
+            <param name="undoManager">コレクションの変更を記録する <see cref="P:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.UndoManager"/></param>
+            <param name="itemTypeDisplayName">エンドユーザーに提示される通りのコレクション内の項目のタイプを表す文字列、またはタイプ名と項目の両方またはいずれか一方を使用するためには null。</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.ClearItems">
+            <summary>コレクションからすべての項目を削除します</summary>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.InsertItem(System.Int32,`0)">
+            <summary>コレクション内で指定したインデックスに新しい項目を挿入します。</summary>
+            <param name="index"><paramref name="item"/> を挿入するインデックス。</param>
+            <param name="item">コレクションに挿入するオブジェクト</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>指定されたインデックスでコレクションにコレクションの要素を挿入します。</summary>
+            <param name="index">新しい要素を挿入する 0 から始まるインデックス。</param>
+            <param name="collection">要素を List に挿入する必要があるコレクション。コレクション自体は null にできませんが、タイプ T が参照タイプである場合、null である要素を含むことができます。</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.MoveItem(System.Int32,System.Int32)">
+            <summary>コレクションのひとつのインデックスから項目を新しい場所に移動します。</summary>
+            <param name="oldIndex">再位置する項目のインデックス。</param>
+            <param name="newIndex">インデックス <paramref name="oldIndex"/> に現在配置されている項目の新しいインデックス</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.OnBeginUpdate">
+            <summary>BeginUpdate が最初に呼び出されて、<see cref="P:Infragistics.Collections.ObservableCollectionExtended`1.IsUpdating"/> が True になると起動されます。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.OnEndUpdate">
+            <summary>EndUpdate が最初に呼び出されて、<see cref="P:Infragistics.Collections.ObservableCollectionExtended`1.IsUpdating"/> が False になると起動されます。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.RemoveItem(System.Int32)">
+            <summary>指定したインデックスにある項目を削除します。</summary>
+            <param name="index">コレクションから削除する項目のインデックス。</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.RemoveRange(System.Int32,System.Int32)">
+            <summary>コレクションから項目の連続したブロックを削除します。</summary>
+            <param name="index">削除する要素の範囲の0から始まるインデックス。</param>
+            <param name="count">削除する要素の数。</param>
+        </member>
+        <member name="M:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.SetItem(System.Int32,`0)">
+            <summary>コレクション内の指定したインデックスにある項目を交換します。</summary>
+            <param name="index">交換される項目のインデックス</param>
+            <param name="item">コレクションに挿入する項目。</param>
+        </member>
+        <member name="P:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.UndoManager">
+            <summary>元に戻す操作に関して、コレクションの変更操作が記録される <see cref="P:Infragistics.Undo.ObservableCollectionExtendedWithUndo`1.UndoManager"/> を返します。</summary>
+        </member>
+        <member name="T:Infragistics.Undo.DependencyPropertyChangeUndoUnit">
+            <summary>DependencyProperty の変更の結果を元に戻すために使用される、カスタムの元に戻すユニット。</summary>
+        </member>
+        <member name="M:Infragistics.Undo.DependencyPropertyChangeUndoUnit.#ctor(System.Windows.DependencyObject,System.Object,System.Object,System.Windows.DependencyProperty,System.String,System.String)">
+            <summary>新しい <see cref="T:Infragistics.Undo.DependencyPropertyChangeUndoUnit"/> を初期化します。</summary>
+            <param name="target">プロパティが変更されたオブジェクト。</param>
+            <param name="oldValue">元に戻す操作が実行されたときに復元されるプロパティの古い値。</param>
+            <param name="newValue">プロパティの新しい値。</param>
+            <param name="property">復元するターゲットの DependencyProperty</param>
+            <param name="propertyDisplayName">エンドユーザーに表示するプロパティの名前、または DependencyProperty の名前を使用する場合は null。Silverlight では、プロパティの名前を取得できない場合があることに注意してください。したがって、これを提供することが推奨されます。</param>
+            <param name="targetDisplayName">エンドユーザーに表示するターゲットを表す文字列、または <paramref name="target"/> 自体から文字列表現を取得する場合は null。</param>
+        </member>
+        <member name="M:Infragistics.Undo.DependencyPropertyChangeUndoUnit.Execute(Infragistics.Undo.UndoExecuteContext)">
+            <summary>関連付けられたアクションを実行するために使用されます。</summary>
+            <param name="executeInfo">実行中の元に戻す/やり直し操作に関する情報を提供します。</param>
+        </member>
+        <member name="M:Infragistics.Undo.DependencyPropertyChangeUndoUnit.Merge(Infragistics.Undo.UndoMergeContext)">
+            <summary>複数の連続した元に戻すユニットを、単一操作に結合できるようにするために使用されます。</summary>
+            <param name="mergeInfo">結合操作の評価のために、ユニットに関する情報を提供します</param>
+            <returns>ユニットが結合された方法を特定するために使用される列挙体を返します。</returns>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.NewValue">
+            <summary>オブジェクトに設定された新しい値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.OldValue">
+            <summary>復元されるオブジェクトの元の値を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.PropertyDisplayName">
+            <summary>エンドユーザーに表示するプロパティ名を表すオプションの文字列。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.PropertyName">
+            <summary>変更されるプロパティ名を返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.Target">
+            <summary><see cref="T:Infragistics.Undo.UndoUnit"/> によって影響を受けるターゲット オブジェクトを返します。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.TargetDisplayName">
+            <summary>エンドユーザーに表示するターゲットを表すオプションの文字列。</summary>
+        </member>
+        <member name="P:Infragistics.Undo.DependencyPropertyChangeUndoUnit.ActualTarget">
+            <summary>実行時にそのプロパティが復元されるオブジェクトを返します。</summary>
+        </member>
+    </members>
+</doc>

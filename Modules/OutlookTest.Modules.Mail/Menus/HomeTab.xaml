@@ -1,0 +1,17 @@
+﻿<ig:RibbonTabItem x:Class="OutlookTest.Modules.Mail.Menus.HomeTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OutlookTest.Modules.Mail.Menus"
+             xmlns:ig ="http://schemas.infragistics.com/xaml/wpf"
+             Header="Home">
+    <ig:RibbonGroup Caption="New">
+        <ig:ToolHorizontalWrapPanel>
+            <ig:ButtonTool Caption="New" Command="{Binding NewMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+            <ig:ButtonTool Caption="Reply" Command="{Binding ReplyMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+            <ig:ButtonTool Caption="Delete" Command="{Binding DeleteMessageCommand}"
+                           ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        </ig:ToolHorizontalWrapPanel>
+    </ig:RibbonGroup>
+</ig:RibbonTabItem>

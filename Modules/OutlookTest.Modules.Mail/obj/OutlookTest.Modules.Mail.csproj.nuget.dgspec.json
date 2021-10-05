@@ -1,0 +1,180 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\OutlookTest.Modules.Mail.csproj": {}
+  },
+  "projects": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\OutlookTest.Modules.Mail.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\OutlookTest.Modules.Mail.csproj",
+        "projectName": "OutlookTest.Modules.Mail",
+        "projectPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\OutlookTest.Modules.Mail.csproj",
+        "packagesPath": "C:\\Users\\이창환\\.nuget\\packages\\",
+        "outputPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\이창환\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net471"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+              },
+              "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj"
+              },
+              "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj"
+              },
+              "C:\\Gut\\OutlookTest\\OutlookTest.Services\\OutlookTest.Services.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Services\\OutlookTest.Services.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {
+          "dependencies": {
+            "Expression.Interaction": {
+              "target": "Package",
+              "version": "[3.0.40218, )"
+            },
+            "Infragistics.WPF.DataGrids": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.DataTree": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.OutlookBar": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.Ribbon": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.RichTextDocument.Rtf": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.RichTextEditor": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.37, )"
+            },
+            "PRISM-Library": {
+              "target": "Package",
+              "version": "[2.6.37, )"
+            },
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "Prism.Wpf": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "System.Windows.Interactivity.WPF": {
+              "target": "Package",
+              "version": "[2.0.20525, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj",
+        "projectName": "OutlookTest.Business",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj",
+        "projectName": "OutlookTest.Core",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj"
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj",
+        "projectName": "OutlookTest.Services.Interfaces",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Services\\OutlookTest.Services.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Services\\OutlookTest.Services.csproj",
+        "projectName": "OutlookTest.Services",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Services\\OutlookTest.Services.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+              },
+              "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Services.Interfaces\\OutlookTest.Services.Interfaces.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    }
+  }
+}

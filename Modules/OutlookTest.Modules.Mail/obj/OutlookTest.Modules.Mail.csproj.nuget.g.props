@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\이창환\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.11.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\이창환\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\이창환\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.37</PkgMicrosoft_Xaml_Behaviors_Wpf>
+    <PkgInfragistics_WPF Condition=" '$(PkgInfragistics_WPF)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf\21.1.27</PkgInfragistics_WPF>
+    <PkgInfragistics_WPF_RichTextDocument Condition=" '$(PkgInfragistics_WPF_RichTextDocument)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.richtextdocument\21.1.27</PkgInfragistics_WPF_RichTextDocument>
+    <PkgInfragistics_WPF_Menus Condition=" '$(PkgInfragistics_WPF_Menus)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.menus\21.1.27</PkgInfragistics_WPF_Menus>
+    <PkgInfragistics_WPF_RichTextEditor Condition=" '$(PkgInfragistics_WPF_RichTextEditor)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.richtexteditor\21.1.27</PkgInfragistics_WPF_RichTextEditor>
+    <PkgInfragistics_WPF_RichTextDocument_Rtf Condition=" '$(PkgInfragistics_WPF_RichTextDocument_Rtf)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.richtextdocument.rtf\21.1.27</PkgInfragistics_WPF_RichTextDocument_Rtf>
+    <PkgInfragistics_WPF_Editors Condition=" '$(PkgInfragistics_WPF_Editors)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.editors\21.1.27</PkgInfragistics_WPF_Editors>
+    <PkgInfragistics_WPF_Ribbon Condition=" '$(PkgInfragistics_WPF_Ribbon)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.ribbon\21.1.27</PkgInfragistics_WPF_Ribbon>
+    <PkgInfragistics_WPF_OutlookBar Condition=" '$(PkgInfragistics_WPF_OutlookBar)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.outlookbar\21.1.27</PkgInfragistics_WPF_OutlookBar>
+    <PkgInfragistics_WPF_DataTree Condition=" '$(PkgInfragistics_WPF_DataTree)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.datatree\21.1.27</PkgInfragistics_WPF_DataTree>
+    <PkgInfragistics_WPF_DataGrids Condition=" '$(PkgInfragistics_WPF_DataGrids)' == '' ">C:\Users\이창환\.nuget\packages\infragistics.wpf.datagrids\21.1.27</PkgInfragistics_WPF_DataGrids>
+  </PropertyGroup>
+</Project>

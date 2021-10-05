@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "9MLQUdXDFcaRzfaJ5HoWaBU7mH9QQzKGKFtfrleFHWXua7vS1fL5teHkyKWn5kuX6L3dwO4eGkrh44noy9qQUg==",
+  "success": true,
+  "projectFilePath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Mail\\OutlookTest.Modules.Mail.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\이창환\\.nuget\\packages\\expression.interaction\\3.0.40218\\expression.interaction.3.0.40218.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf\\21.1.27\\infragistics.wpf.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.datagrids\\21.1.27\\infragistics.wpf.datagrids.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.datamanager\\21.1.27\\infragistics.wpf.datamanager.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.datatree\\21.1.27\\infragistics.wpf.datatree.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.documents.core\\21.1.27\\infragistics.wpf.documents.core.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.dragdrop\\21.1.27\\infragistics.wpf.dragdrop.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.editors\\21.1.27\\infragistics.wpf.editors.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.menus\\21.1.27\\infragistics.wpf.menus.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.outlookbar\\21.1.27\\infragistics.wpf.outlookbar.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.ribbon\\21.1.27\\infragistics.wpf.ribbon.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.richtextdocument\\21.1.27\\infragistics.wpf.richtextdocument.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.richtextdocument.rtf\\21.1.27\\infragistics.wpf.richtextdocument.rtf.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.richtexteditor\\21.1.27\\infragistics.wpf.richtexteditor.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.undo\\21.1.27\\infragistics.wpf.undo.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.37\\microsoft.xaml.behaviors.wpf.1.1.37.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\prism-library\\2.6.37\\prism-library.2.6.37.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\prism.core\\8.1.97\\prism.core.8.1.97.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\prism.wpf\\8.1.97\\prism.wpf.8.1.97.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\system.windows.interactivity.wpf\\2.0.20525\\system.windows.interactivity.wpf.2.0.20525.nupkg.sha512"
+  ],
+  "logs": []
+}

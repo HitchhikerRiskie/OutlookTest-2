@@ -1,0 +1,149 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Infragistics.WPF.Controls.Editors.XamRichTextEditor/1.0.0": {
+        "dependencies": {
+          "Infragistics.WPF": "1.0.0",
+          "Infragistics.WPF.Controls.Menus.XamMenu": "1.0.0",
+          "Infragistics.WPF.Documents.RichTextDocument": "1.0.0",
+          "Infragistics.WPF.Undo": "1.0.0"
+        },
+        "runtime": {
+          "Infragistics.WPF.Controls.Editors.XamRichTextEditor.dll": {}
+        },
+        "resources": {
+          "de/Infragistics.WPF.Controls.Editors.XamRichTextEditor.resources.dll": {
+            "locale": "de"
+          },
+          "es/Infragistics.WPF.Controls.Editors.XamRichTextEditor.resources.dll": {
+            "locale": "es"
+          },
+          "fr/Infragistics.WPF.Controls.Editors.XamRichTextEditor.resources.dll": {
+            "locale": "fr"
+          },
+          "ja/Infragistics.WPF.Controls.Editors.XamRichTextEditor.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF/1.0.0": {
+        "runtime": {
+          "Infragistics.WPF.dll": {}
+        },
+        "resources": {
+          "de/Infragistics.WPF.resources.dll": {
+            "locale": "de"
+          },
+          "es/Infragistics.WPF.resources.dll": {
+            "locale": "es"
+          },
+          "fr/Infragistics.WPF.resources.dll": {
+            "locale": "fr"
+          },
+          "ja/Infragistics.WPF.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Controls.Menus.XamMenu/1.0.0": {
+        "dependencies": {
+          "Infragistics.WPF": "1.0.0"
+        },
+        "runtime": {
+          "Infragistics.WPF.Controls.Menus.XamMenu.dll": {}
+        },
+        "resources": {
+          "de/Infragistics.WPF.Controls.Menus.XamMenu.resources.dll": {
+            "locale": "de"
+          },
+          "es/Infragistics.WPF.Controls.Menus.XamMenu.resources.dll": {
+            "locale": "es"
+          },
+          "fr/Infragistics.WPF.Controls.Menus.XamMenu.resources.dll": {
+            "locale": "fr"
+          },
+          "ja/Infragistics.WPF.Controls.Menus.XamMenu.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Documents.RichTextDocument/1.0.0": {
+        "dependencies": {
+          "Infragistics.WPF": "1.0.0",
+          "Infragistics.WPF.Undo": "1.0.0"
+        },
+        "runtime": {
+          "Infragistics.WPF.Documents.RichTextDocument.dll": {}
+        },
+        "resources": {
+          "de/Infragistics.WPF.Documents.RichTextDocument.resources.dll": {
+            "locale": "de"
+          },
+          "es/Infragistics.WPF.Documents.RichTextDocument.resources.dll": {
+            "locale": "es"
+          },
+          "fr/Infragistics.WPF.Documents.RichTextDocument.resources.dll": {
+            "locale": "fr"
+          },
+          "ja/Infragistics.WPF.Documents.RichTextDocument.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Undo/1.0.0": {
+        "dependencies": {
+          "Infragistics.WPF": "1.0.0"
+        },
+        "runtime": {
+          "Infragistics.WPF.Undo.dll": {}
+        },
+        "resources": {
+          "de/Infragistics.WPF.Undo.resources.dll": {
+            "locale": "de"
+          },
+          "es/Infragistics.WPF.Undo.resources.dll": {
+            "locale": "es"
+          },
+          "fr/Infragistics.WPF.Undo.resources.dll": {
+            "locale": "fr"
+          },
+          "ja/Infragistics.WPF.Undo.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Infragistics.WPF.Controls.Editors.XamRichTextEditor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infragistics.WPF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infragistics.WPF.Controls.Menus.XamMenu/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infragistics.WPF.Documents.RichTextDocument/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infragistics.WPF.Undo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

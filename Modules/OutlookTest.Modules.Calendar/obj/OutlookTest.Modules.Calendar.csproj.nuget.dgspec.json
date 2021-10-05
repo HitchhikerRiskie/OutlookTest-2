@@ -1,0 +1,74 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj": {}
+  },
+  "projects": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj",
+        "projectName": "OutlookTest.Modules.Calendar",
+        "projectPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj",
+        "packagesPath": "C:\\Users\\이창환\\.nuget\\packages\\",
+        "outputPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\이창환\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net471"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {
+          "dependencies": {
+            "Infragistics.WPF.DataTree": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.OutlookBar": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.Ribbon": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Prism.Wpf": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

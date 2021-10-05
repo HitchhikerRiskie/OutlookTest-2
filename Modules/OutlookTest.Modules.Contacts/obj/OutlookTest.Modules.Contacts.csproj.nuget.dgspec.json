@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\OutlookTest.Modules.Contacts.csproj": {}
+  },
+  "projects": {
+    "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\OutlookTest.Modules.Contacts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\OutlookTest.Modules.Contacts.csproj",
+        "projectName": "OutlookTest.Modules.Contacts",
+        "projectPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\OutlookTest.Modules.Contacts.csproj",
+        "packagesPath": "C:\\Users\\이창환\\.nuget\\packages\\",
+        "outputPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\이창환\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net471"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+              },
+              "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj": {
+                "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {
+          "dependencies": {
+            "Infragistics.WPF.DataTree": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.OutlookBar": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Infragistics.WPF.Ribbon": {
+              "target": "Package",
+              "version": "[21.1.27, )"
+            },
+            "Prism.Wpf": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj",
+        "projectName": "OutlookTest.Business",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Business\\OutlookTest.Business.csproj"
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj",
+        "projectName": "OutlookTest.Core",
+        "projectPath": "C:\\Gut\\OutlookTest\\OutlookTest.Core\\OutlookTest.Core.csproj"
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "vZfVCrV7UDS2PMr+HEs1o2z2ifEnLikn6XGt5lAQtcYwIDzBhWBF9XQHdXoW71jdq84x6BDHV8WwoHbtEsQ1YA==",
+  "success": true,
+  "projectFilePath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Contacts\\OutlookTest.Modules.Contacts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf\\21.1.27\\infragistics.wpf.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.datamanager\\21.1.27\\infragistics.wpf.datamanager.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.datatree\\21.1.27\\infragistics.wpf.datatree.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.dragdrop\\21.1.27\\infragistics.wpf.dragdrop.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.editors\\21.1.27\\infragistics.wpf.editors.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.outlookbar\\21.1.27\\infragistics.wpf.outlookbar.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\infragistics.wpf.ribbon\\21.1.27\\infragistics.wpf.ribbon.21.1.27.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\prism.core\\8.1.97\\prism.core.8.1.97.nupkg.sha512",
+    "C:\\Users\\이창환\\.nuget\\packages\\prism.wpf\\8.1.97\\prism.wpf.8.1.97.nupkg.sha512"
+  ],
+  "logs": []
+}

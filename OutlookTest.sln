@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest", "OutlookTest\OutlookTest.csproj", "{83CD86CC-88B1-4BCA-B9FA-E9B096A59A33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{E2621862-C23E-4BB9-B41B-F50A6BDFACCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Core", "OutlookTest.Core\OutlookTest.Core.csproj", "{96646BBB-2676-4F49-B318-3D0A009E79FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Modules.Mail", "Modules\OutlookTest.Modules.Mail\OutlookTest.Modules.Mail.csproj", "{2EA8E524-F71B-4874-940E-B4DFB719DC71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Modules.Contacts", "Modules\OutlookTest.Modules.Contacts\OutlookTest.Modules.Contacts.csproj", "{2060C0DF-73DC-46CA-B52B-FC9F404F56EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Modules.Calendar", "Modules\OutlookTest.Modules.Calendar\OutlookTest.Modules.Calendar.csproj", "{262B08BC-528A-427C-87F9-ED534FBEF728}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Business", "OutlookTest.Business\OutlookTest.Business.csproj", "{3A8F01E5-F917-49FF-89D3-DE8FAB0EF369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Services", "OutlookTest.Services\OutlookTest.Services.csproj", "{964C9C93-28DD-4611-82FE-50B210E21ADD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookTest.Services.Interfaces", "OutlookTest.Services.Interfaces\OutlookTest.Services.Interfaces.csproj", "{79893604-7E0D-4E77-9355-D52A9EABFAFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{4ACC547B-F682-434F-8F19-8CA95B95991D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\OneDrive - (주)케이에이치시스템즈\바탕 화면\Unknown.png = ..\..\OneDrive - (주)케이에이치시스템즈\바탕 화면\Unknown.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83CD86CC-88B1-4BCA-B9FA-E9B096A59A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83CD86CC-88B1-4BCA-B9FA-E9B096A59A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83CD86CC-88B1-4BCA-B9FA-E9B096A59A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83CD86CC-88B1-4BCA-B9FA-E9B096A59A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96646BBB-2676-4F49-B318-3D0A009E79FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96646BBB-2676-4F49-B318-3D0A009E79FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96646BBB-2676-4F49-B318-3D0A009E79FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96646BBB-2676-4F49-B318-3D0A009E79FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA8E524-F71B-4874-940E-B4DFB719DC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA8E524-F71B-4874-940E-B4DFB719DC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA8E524-F71B-4874-940E-B4DFB719DC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA8E524-F71B-4874-940E-B4DFB719DC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2060C0DF-73DC-46CA-B52B-FC9F404F56EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2060C0DF-73DC-46CA-B52B-FC9F404F56EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2060C0DF-73DC-46CA-B52B-FC9F404F56EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2060C0DF-73DC-46CA-B52B-FC9F404F56EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262B08BC-528A-427C-87F9-ED534FBEF728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262B08BC-528A-427C-87F9-ED534FBEF728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262B08BC-528A-427C-87F9-ED534FBEF728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262B08BC-528A-427C-87F9-ED534FBEF728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8F01E5-F917-49FF-89D3-DE8FAB0EF369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8F01E5-F917-49FF-89D3-DE8FAB0EF369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8F01E5-F917-49FF-89D3-DE8FAB0EF369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8F01E5-F917-49FF-89D3-DE8FAB0EF369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964C9C93-28DD-4611-82FE-50B210E21ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964C9C93-28DD-4611-82FE-50B210E21ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964C9C93-28DD-4611-82FE-50B210E21ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964C9C93-28DD-4611-82FE-50B210E21ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79893604-7E0D-4E77-9355-D52A9EABFAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79893604-7E0D-4E77-9355-D52A9EABFAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79893604-7E0D-4E77-9355-D52A9EABFAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79893604-7E0D-4E77-9355-D52A9EABFAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EA8E524-F71B-4874-940E-B4DFB719DC71} = {E2621862-C23E-4BB9-B41B-F50A6BDFACCC}
+		{2060C0DF-73DC-46CA-B52B-FC9F404F56EB} = {E2621862-C23E-4BB9-B41B-F50A6BDFACCC}
+		{262B08BC-528A-427C-87F9-ED534FBEF728} = {E2621862-C23E-4BB9-B41B-F50A6BDFACCC}
+		{4ACC547B-F682-434F-8F19-8CA95B95991D} = {E2621862-C23E-4BB9-B41B-F50A6BDFACCC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C9DD9C2-1895-413B-B9E1-C7BAED471AC9}
+	EndGlobalSection
+EndGlobal

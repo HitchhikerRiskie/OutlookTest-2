@@ -1,0 +1,1216 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.1": {
+      "Infragistics.WPF/21.1.27": {
+        "type": "package",
+        "compile": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataManager/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataTree/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.DataManager": "[21.1.27]",
+          "Infragistics.WPF.DragDrop": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "resource": {
+          "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DragDrop/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        }
+      },
+      "Infragistics.WPF.Editors/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.OutlookBar/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Ribbon/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.Editors": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.XML",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/net47/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.dll": {}
+        }
+      },
+      "Prism.Wpf/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
+          "Prism.Core": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net47/Prism.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.Wpf.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.1/win": {
+      "Infragistics.WPF/21.1.27": {
+        "type": "package",
+        "compile": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataManager/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataTree/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.DataManager": "[21.1.27]",
+          "Infragistics.WPF.DragDrop": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "resource": {
+          "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DragDrop/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        }
+      },
+      "Infragistics.WPF.Editors/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.OutlookBar/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Ribbon/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.Editors": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.XML",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/net47/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.dll": {}
+        }
+      },
+      "Prism.Wpf/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
+          "Prism.Core": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net47/Prism.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.Wpf.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.1/win-x64": {
+      "Infragistics.WPF/21.1.27": {
+        "type": "package",
+        "compile": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataManager/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataTree/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.DataManager": "[21.1.27]",
+          "Infragistics.WPF.DragDrop": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "resource": {
+          "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DragDrop/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        }
+      },
+      "Infragistics.WPF.Editors/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.OutlookBar/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Ribbon/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.Editors": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.XML",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/net47/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.dll": {}
+        }
+      },
+      "Prism.Wpf/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
+          "Prism.Core": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net47/Prism.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.Wpf.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.1/win-x86": {
+      "Infragistics.WPF/21.1.27": {
+        "type": "package",
+        "compile": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataManager/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DataManager.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.DataManager.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DataTree/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.DataManager": "[21.1.27]",
+          "Infragistics.WPF.DragDrop": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll": {}
+        },
+        "resource": {
+          "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.DragDrop/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.DragDrop.dll": {}
+        }
+      },
+      "Infragistics.WPF.Editors/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Editors.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Editors.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.OutlookBar/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.OutlookBar.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.OutlookBar.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Infragistics.WPF.Ribbon/21.1.27": {
+        "type": "package",
+        "dependencies": {
+          "Infragistics.WPF": "[21.1.27]",
+          "Infragistics.WPF.Editors": "[21.1.27]"
+        },
+        "compile": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "runtime": {
+          "lib/net40/InfragisticsWPF.Ribbon.dll": {}
+        },
+        "resource": {
+          "lib/net40/de/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/ja/InfragisticsWPF.Ribbon.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.XML",
+          "System.Xaml",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Xaml.Behaviors.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/net47/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.dll": {}
+        }
+      },
+      "Prism.Wpf/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
+          "Prism.Core": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net47/Prism.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net47/Prism.Wpf.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Infragistics.WPF/21.1.27": {
+      "sha512": "4+nikRj19kSkc0OxT0hxPFwPm+b1EXKZ9uD8pXr55Em0j8NYQ5gZAItn9S06Z9QZT7pKwyhvR6pomUSdxfctFw==",
+      "type": "package",
+      "path": "infragistics.wpf/21.1.27",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.21.1.27.nupkg.sha512",
+        "infragistics.wpf.nuspec",
+        "lib/net40/Design/InfragisticsWPF.DesignTools.SmartTag.dll",
+        "lib/net40/Design/InfragisticsWPF.DesignTools.dll",
+        "lib/net40/InfragisticsWPF.dll",
+        "lib/net40/InfragisticsWPF.xml",
+        "lib/net40/de/InfragisticsWPF.resources.dll",
+        "lib/net40/es/InfragisticsWPF.resources.dll",
+        "lib/net40/fr/InfragisticsWPF.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.xml",
+        "lib/net5.0-windows/Design/Infragistics.WPF.DesignTools.SmartTag.dll",
+        "lib/net5.0-windows/Design/Infragistics.WPF.DesignTools.dll",
+        "lib/net5.0-windows/Infragistics.WPF.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.dll",
+        "lib/net5.0-windows/Infragistics.WPF.xml",
+        "lib/net5.0-windows/de/Infragistics.WPF.resources.dll",
+        "lib/net5.0-windows/es/Infragistics.WPF.resources.dll",
+        "lib/net5.0-windows/fr/Infragistics.WPF.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.xml",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.DesignTools.SmartTag.dll",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.DesignTools.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.xml",
+        "lib/netcoreapp3.1/de/Infragistics.WPF.resources.dll",
+        "lib/netcoreapp3.1/es/Infragistics.WPF.resources.dll",
+        "lib/netcoreapp3.1/fr/Infragistics.WPF.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Infragistics.WPF.DataManager/21.1.27": {
+      "sha512": "od7/ZjTBHqsXaLDUmOtbAk7ZLVMYgH2jDatbzcrmr4A2Txhhu6b+llsROl1/dvtja7l7h+Lz+ojDlaIMU8EC9w==",
+      "type": "package",
+      "path": "infragistics.wpf.datamanager/21.1.27",
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.datamanager.21.1.27.nupkg.sha512",
+        "infragistics.wpf.datamanager.nuspec",
+        "lib/net40/InfragisticsWPF.DataManager.dll",
+        "lib/net40/InfragisticsWPF.DataManager.xml",
+        "lib/net40/de/InfragisticsWPF.DataManager.resources.dll",
+        "lib/net40/es/InfragisticsWPF.DataManager.resources.dll",
+        "lib/net40/fr/InfragisticsWPF.DataManager.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.DataManager.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.DataManager.xml",
+        "lib/net5.0-windows/Infragistics.WPF.DataManager.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.DataManager.dll",
+        "lib/net5.0-windows/Infragistics.WPF.DataManager.xml",
+        "lib/net5.0-windows/de/Infragistics.WPF.DataManager.resources.dll",
+        "lib/net5.0-windows/es/Infragistics.WPF.DataManager.resources.dll",
+        "lib/net5.0-windows/fr/Infragistics.WPF.DataManager.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.DataManager.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.DataManager.xml",
+        "lib/netcoreapp3.1/Infragistics.WPF.DataManager.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.DataManager.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.DataManager.xml",
+        "lib/netcoreapp3.1/de/Infragistics.WPF.DataManager.resources.dll",
+        "lib/netcoreapp3.1/es/Infragistics.WPF.DataManager.resources.dll",
+        "lib/netcoreapp3.1/fr/Infragistics.WPF.DataManager.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.DataManager.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.DataManager.xml"
+      ]
+    },
+    "Infragistics.WPF.DataTree/21.1.27": {
+      "sha512": "243t/H8I0qHfEkV6u50fy7NNTh5TMXNj9tu4+6SY8lNyHnTQ6yAc6Biv+/Ri1YMhaR2dPeUxPnNkBnBCqVvBGA==",
+      "type": "package",
+      "path": "infragistics.wpf.datatree/21.1.27",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.datatree.21.1.27.nupkg.sha512",
+        "infragistics.wpf.datatree.nuspec",
+        "lib/net40/Design/InfragisticsWPF.Controls.Menus.XamDataTree.DesignTools.dll",
+        "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.dll",
+        "lib/net40/InfragisticsWPF.Controls.Menus.XamDataTree.xml",
+        "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.Controls.Menus.XamDataTree.xml",
+        "lib/net5.0-windows/Design/Infragistics.WPF.Controls.Menus.XamDataTree.DesignTools.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Controls.Menus.XamDataTree.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.Controls.Menus.XamDataTree.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Controls.Menus.XamDataTree.xml",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Controls.Menus.XamDataTree.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Controls.Menus.XamDataTree.xml",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.Controls.Menus.XamDataTree.DesignTools.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Controls.Menus.XamDataTree.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.Controls.Menus.XamDataTree.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Controls.Menus.XamDataTree.xml",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Controls.Menus.XamDataTree.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Controls.Menus.XamDataTree.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Infragistics.WPF.DragDrop/21.1.27": {
+      "sha512": "w8+7ZYppkMTXfwLnagmuEV0LYXkHareJLlizTUELv76A8gNN38e2v2MbH6lcPZDCzoAm17W1jhpq0MEG2mJawg==",
+      "type": "package",
+      "path": "infragistics.wpf.dragdrop/21.1.27",
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.dragdrop.21.1.27.nupkg.sha512",
+        "infragistics.wpf.dragdrop.nuspec",
+        "lib/net40/InfragisticsWPF.DragDrop.dll",
+        "lib/net40/InfragisticsWPF.DragDrop.xml",
+        "lib/net40/ja/InfragisticsWPF.DragDrop.xml",
+        "lib/net5.0-windows/Infragistics.WPF.DragDrop.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.DragDrop.dll",
+        "lib/net5.0-windows/Infragistics.WPF.DragDrop.xml",
+        "lib/net5.0-windows/ja/Infragistics.WPF.DragDrop.xml",
+        "lib/netcoreapp3.1/Infragistics.WPF.DragDrop.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.DragDrop.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.DragDrop.xml",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.DragDrop.xml"
+      ]
+    },
+    "Infragistics.WPF.Editors/21.1.27": {
+      "sha512": "UYEaw2kwpcN7OaRleGkBq20PPTUWYHnNdw1iYVfpslDbkLZOzhCO5oZrP+HUJXq/ZDHr+yceKi3gRexlnj+xqw==",
+      "type": "package",
+      "path": "infragistics.wpf.editors/21.1.27",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.editors.21.1.27.nupkg.sha512",
+        "infragistics.wpf.editors.nuspec",
+        "lib/net40/Design/InfragisticsWPF.Editors.DesignTools.dll",
+        "lib/net40/InfragisticsWPF.Editors.dll",
+        "lib/net40/InfragisticsWPF.Editors.xml",
+        "lib/net40/de/InfragisticsWPF.Editors.resources.dll",
+        "lib/net40/es/InfragisticsWPF.Editors.resources.dll",
+        "lib/net40/fr/InfragisticsWPF.Editors.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.Editors.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.Editors.xml",
+        "lib/net5.0-windows/Design/Infragistics.WPF.Editors.DesignTools.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Editors.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.Editors.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Editors.xml",
+        "lib/net5.0-windows/de/Infragistics.WPF.Editors.resources.dll",
+        "lib/net5.0-windows/es/Infragistics.WPF.Editors.resources.dll",
+        "lib/net5.0-windows/fr/Infragistics.WPF.Editors.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Editors.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Editors.xml",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.Editors.DesignTools.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Editors.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.Editors.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Editors.xml",
+        "lib/netcoreapp3.1/de/Infragistics.WPF.Editors.resources.dll",
+        "lib/netcoreapp3.1/es/Infragistics.WPF.Editors.resources.dll",
+        "lib/netcoreapp3.1/fr/Infragistics.WPF.Editors.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Editors.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Editors.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Infragistics.WPF.OutlookBar/21.1.27": {
+      "sha512": "jUC20N/5kSwxTHLadYZ0vKT616M0t1zOXfJ+6/mxdpz4YpAOJzSypthv8JKu8nhz6ZZjCj9HT9kFdWlPQL1uvA==",
+      "type": "package",
+      "path": "infragistics.wpf.outlookbar/21.1.27",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.outlookbar.21.1.27.nupkg.sha512",
+        "infragistics.wpf.outlookbar.nuspec",
+        "lib/net40/Design/InfragisticsWPF.OutlookBar.DesignTools.dll",
+        "lib/net40/InfragisticsWPF.OutlookBar.XML",
+        "lib/net40/InfragisticsWPF.OutlookBar.dll",
+        "lib/net40/de/InfragisticsWPF.OutlookBar.resources.dll",
+        "lib/net40/es/InfragisticsWPF.OutlookBar.resources.dll",
+        "lib/net40/fr/InfragisticsWPF.OutlookBar.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.OutlookBar.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.OutlookBar.xml",
+        "lib/net5.0-windows/Design/Infragistics.WPF.OutlookBar.DesignTools.dll",
+        "lib/net5.0-windows/Infragistics.WPF.OutlookBar.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.OutlookBar.dll",
+        "lib/net5.0-windows/Infragistics.WPF.OutlookBar.xml",
+        "lib/net5.0-windows/de/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/net5.0-windows/es/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/net5.0-windows/fr/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.OutlookBar.xml",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.OutlookBar.DesignTools.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.OutlookBar.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.OutlookBar.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.OutlookBar.xml",
+        "lib/netcoreapp3.1/de/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/netcoreapp3.1/es/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/netcoreapp3.1/fr/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.OutlookBar.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.OutlookBar.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Infragistics.WPF.Ribbon/21.1.27": {
+      "sha512": "4b7D6i/Z5KCth3SYSxCK4zmBLktASmcJJ3RqV+RTQNkup5FTc8OrkC1SBP1XIFdXzvphZNWk/+xdCjP8bkM/RQ==",
+      "type": "package",
+      "path": "infragistics.wpf.ribbon/21.1.27",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        "infragistics.wpf.ribbon.21.1.27.nupkg.sha512",
+        "infragistics.wpf.ribbon.nuspec",
+        "lib/net40/Design/InfragisticsWPF.Ribbon.DesignTools.dll",
+        "lib/net40/InfragisticsWPF.Ribbon.XML",
+        "lib/net40/InfragisticsWPF.Ribbon.dll",
+        "lib/net40/de/InfragisticsWPF.Ribbon.resources.dll",
+        "lib/net40/es/InfragisticsWPF.Ribbon.resources.dll",
+        "lib/net40/fr/InfragisticsWPF.Ribbon.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.Ribbon.resources.dll",
+        "lib/net40/ja/InfragisticsWPF.Ribbon.xml",
+        "lib/net5.0-windows/Design/Infragistics.WPF.Ribbon.DesignTools.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Ribbon.deps.json",
+        "lib/net5.0-windows/Infragistics.WPF.Ribbon.dll",
+        "lib/net5.0-windows/Infragistics.WPF.Ribbon.xml",
+        "lib/net5.0-windows/de/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/net5.0-windows/es/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/net5.0-windows/fr/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/net5.0-windows/ja/Infragistics.WPF.Ribbon.xml",
+        "lib/netcoreapp3.1/Design/Infragistics.WPF.Ribbon.DesignTools.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Ribbon.deps.json",
+        "lib/netcoreapp3.1/Infragistics.WPF.Ribbon.dll",
+        "lib/netcoreapp3.1/Infragistics.WPF.Ribbon.xml",
+        "lib/netcoreapp3.1/de/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/netcoreapp3.1/es/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/netcoreapp3.1/fr/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Ribbon.resources.dll",
+        "lib/netcoreapp3.1/ja/Infragistics.WPF.Ribbon.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+      "sha512": "LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
+      "type": "package",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.31",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Design/Microsoft.Xaml.Behaviors.Design.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net45/Microsoft.Xaml.Behaviors.xml",
+        "lib/net5.0-windows7.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.xml",
+        "lib/netcoreapp3.1/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.pdb",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.xml",
+        "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+        "microsoft.xaml.behaviors.wpf.nuspec",
+        "tools/Install.ps1"
+      ]
+    },
+    "Prism.Core/8.1.97": {
+      "sha512": "EP5zrvWddw3eSq25Y7hHnDYdmLZEC2Z/gMrvmHzUuLbitmA1UaS7wQUlSwNr9Km8lzJNCvytFnaGBEFukHgoHg==",
+      "type": "package",
+      "path": "prism.core/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net461/Prism.dll",
+        "lib/net461/Prism.pdb",
+        "lib/net461/Prism.xml",
+        "lib/net47/Prism.dll",
+        "lib/net47/Prism.pdb",
+        "lib/net47/Prism.xml",
+        "lib/net5.0/Prism.dll",
+        "lib/net5.0/Prism.pdb",
+        "lib/net5.0/Prism.xml",
+        "lib/netstandard2.0/Prism.dll",
+        "lib/netstandard2.0/Prism.pdb",
+        "lib/netstandard2.0/Prism.xml",
+        "prism-logo.png",
+        "prism.core.8.1.97.nupkg.sha512",
+        "prism.core.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Prism.Wpf/8.1.97": {
+      "sha512": "ZEa6S1mK35h8/blyb0uR0ed3wkpHtPdhB4eniXINJnTiJMWlGl/As6SVlFFdOPD+qsEdWNYV3xgyQD/ue5cvBA==",
+      "type": "package",
+      "path": "prism.wpf/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net461/Prism.Wpf.dll",
+        "lib/net461/Prism.Wpf.pdb",
+        "lib/net461/Prism.Wpf.xml",
+        "lib/net47/Prism.Wpf.dll",
+        "lib/net47/Prism.Wpf.pdb",
+        "lib/net47/Prism.Wpf.xml",
+        "lib/net5.0-windows7.0/Prism.Wpf.dll",
+        "lib/net5.0-windows7.0/Prism.Wpf.pdb",
+        "lib/net5.0-windows7.0/Prism.Wpf.xml",
+        "lib/netcoreapp3.1/Prism.Wpf.dll",
+        "lib/netcoreapp3.1/Prism.Wpf.pdb",
+        "lib/netcoreapp3.1/Prism.Wpf.xml",
+        "prism-logo.png",
+        "prism.wpf.8.1.97.nupkg.sha512",
+        "prism.wpf.nuspec",
+        "readme.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.1": [
+      "Infragistics.WPF.DataTree >= 21.1.27",
+      "Infragistics.WPF.OutlookBar >= 21.1.27",
+      "Infragistics.WPF.Ribbon >= 21.1.27",
+      "Prism.Wpf >= 8.1.97"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\이창환\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj",
+      "projectName": "OutlookTest.Modules.Calendar",
+      "projectPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\OutlookTest.Modules.Calendar.csproj",
+      "packagesPath": "C:\\Users\\이창환\\.nuget\\packages\\",
+      "outputPath": "C:\\Gut\\OutlookTest\\Modules\\OutlookTest.Modules.Calendar\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\이창환\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net471"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net471": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net471": {
+        "dependencies": {
+          "Infragistics.WPF.DataTree": {
+            "target": "Package",
+            "version": "[21.1.27, )"
+          },
+          "Infragistics.WPF.OutlookBar": {
+            "target": "Package",
+            "version": "[21.1.27, )"
+          },
+          "Infragistics.WPF.Ribbon": {
+            "target": "Package",
+            "version": "[21.1.27, )"
+          },
+          "Prism.Wpf": {
+            "target": "Package",
+            "version": "[8.1.97, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

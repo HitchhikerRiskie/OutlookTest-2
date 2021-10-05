@@ -1,0 +1,14 @@
+﻿<FileList>
+<File Reference="InfragisticsWPF.Documents.RichTextDocument.dll">
+<ToolboxItems VSCategory="Infragistics 21.1 WPF" BlendCategory="Infragistics 21.1 WPF" UIFramework="WPF">
+<Item Type="Infragistics.Documents.RichText.Serialization.CustomBinaryDocumentAdapter" />
+<Item Type="Infragistics.Documents.RichText.Serialization.PlainTextDocumentAdapter" />
+</ToolboxItems>
+</File>
+<File Reference="Infragistics.WPF.Documents.RichTextDocument.dll">
+<ToolboxItems VSCategory="Infragistics 21.1 WPF" BlendCategory="Infragistics 21.1 WPF" UIFramework="WPF">
+<Item Type="Infragistics.Documents.RichText.Serialization.CustomBinaryDocumentAdapter" />
+<Item Type="Infragistics.Documents.RichText.Serialization.PlainTextDocumentAdapter" />
+</ToolboxItems>
+</File>
+</FileList>
