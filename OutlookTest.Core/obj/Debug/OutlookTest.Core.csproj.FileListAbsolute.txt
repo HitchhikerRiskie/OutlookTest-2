@@ -97,7 +97,6 @@ C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.csproj.CoreCompil
 C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.csproj.CopyComplete
 C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.dll
 C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.pdb
-C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.csproj.AssemblyReference.cache
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\InfragisticsWPF.Controls.Editors.XamRichTextEditor.dll
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\InfragisticsWPF.Controls.Menus.XamMenu.dll
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\InfragisticsWPF.dll
