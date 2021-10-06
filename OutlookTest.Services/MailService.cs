@@ -17,7 +17,7 @@ namespace OutlookTest.Services
             new MailMessage()
             {
                 Id = 1,
-                From = "changlee10091",
+                From = "changlee10091@naver.com",
                 To = new ObservableCollection<string>(){ "abc@cba.com", "abc@cba.com"},
                 Subject = "this is email1",
                 Body = Resources.DavidSmit_GraphicDesignerCoverLetter,
@@ -25,7 +25,7 @@ namespace OutlookTest.Services
             },new MailMessage()
             {
                 Id = 2,
-                From = "changlee10092",
+                From = "changlee10092@naver.com",
                 To = new ObservableCollection<string>(){ "abc@cba.com", "abc@cba.com"},
                 Subject = "this is email2",
                 Body = Resources.DavidSmit_SampleCoverLetterEmail,
@@ -33,7 +33,7 @@ namespace OutlookTest.Services
             },new MailMessage()
             {
                 Id = 3,
-                From = "changlee10093",
+                From = "changlee10093@naver.com",
                 To = new ObservableCollection<string>(){ "abc@cba.com", "abc@cba.com"},
                 Subject = "this is email3",
                 Body = Resources.MargaretJones_RE_GraphicDesignerCoverLetter,
@@ -41,7 +41,7 @@ namespace OutlookTest.Services
             },new MailMessage()
             {
                 Id = 4,
-                From = "changlee10094",
+                From = "changlee10094@naver.com",
                 To = new ObservableCollection<string>(){ "abc@cba.com", "abc@cba.com"},
                 Subject = "this is email4",
                 Body = Resources.BarbaraBailey_RE_SampleCoverLetterEmail,

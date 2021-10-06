@@ -1,15 +1,9 @@
-﻿<ig:RibbonTabItem x:Class="OutlookTest.Modules.Mail.Menus.HomeTab"
+﻿<ig:RibbonTabItem x:Class="OutlookTest.Modules.Mail.Menus.MessageReadOnlyTab"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:OutlookTest.Modules.Mail"
-             xmlns:ig ="http://schemas.infragistics.com/xaml/wpf"
-             Header="Home">
-    <ig:RibbonGroup Caption="New">
-        <ig:ButtonTool Caption="New Email" 
-                          Command="{Binding NewMessageCommand}" CommandParameter="new"
-                          LargeImage="/OutlookTest.Modules.Mail;component/Images/NewMailMessage32.png" 
-                          SmallImage="/OutlookTest.Modules.Mail;component/Images/NewMailMessage16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
-    </ig:RibbonGroup>
+             xmlns:local="clr-namespace:OutlookTest.Modules.Mail.Menus"
+             xmlns:ig="http://schemas.infragistics.com/xaml/wpf"
+                  Header="Home">
     <ig:RibbonGroup Caption="Delete">
         <ig:ButtonTool Caption="Delete" 
                           Command="{Binding DeleteMessageCommand}" 

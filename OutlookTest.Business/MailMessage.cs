@@ -24,14 +24,14 @@ namespace OutlookTest.Business
             set { SetProperty(ref _subject, value); }
         }
 
-        private ObservableCollection<string> _to;
+        private ObservableCollection<string> _to = new ObservableCollection<string>();
         public ObservableCollection<string> To
         {
             get { return _to; }
             set { SetProperty(ref _to, value); }
         }
 
-        private ObservableCollection<string> _cc;
+        private ObservableCollection<string> _cc = new ObservableCollection<string>();
         public ObservableCollection<string> CC
         {
             get { return _cc; }

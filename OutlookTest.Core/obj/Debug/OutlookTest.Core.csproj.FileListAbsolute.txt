@@ -127,3 +127,4 @@ C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\de\InfragisticsWPF.Undo.resources.
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\es\InfragisticsWPF.Undo.resources.dll
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\fr\InfragisticsWPF.Undo.resources.dll
 C:\Gut\OutlookTest\OutlookTest.Core\bin\Debug\ja\InfragisticsWPF.Undo.resources.dll
+C:\Gut\OutlookTest\OutlookTest.Core\obj\Debug\OutlookTest.Core.csproj.AssemblyReference.cache

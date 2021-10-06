@@ -7,6 +7,7 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace OutlookTest.Modules.Mail.ViewModels
@@ -54,11 +55,72 @@ namespace OutlookTest.Modules.Mail.ViewModels
         }
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            var messageId = parameters.GetValue<int>("id");
-            if (messageId == 0)
-                Message = new MailMessage() { From = "changlee1009@naver.com"};
-            else 
-                Message = _mailService.GetMessage(messageId);
+            Message = new MailMessage() { From = "changlee1009@naver.com" };
+            Message.Id = new Random().Next(10, 6000);
+
+            var messageMode = parameters.GetValue<MessageModes>(MailParameters.MessageMode);
+            if (messageMode != MessageModes.New)
+            {
+                var messageId = parameters.GetValue<int>(MailParameters.MessageId);
+                var originalMessage = _mailService.GetMessage(messageId);
+
+                Message.To = GetToEmails(messageMode, originalMessage);
+                if(messageMode == MessageModes.Reply || messageMode == MessageModes.ReplyAll)
+                    Message.CC = originalMessage.CC;
+                Message.Subject = GetMessageSubject(messageMode, originalMessage);
+
+
+
+                Message.Body = originalMessage.Body;
+            }
+        }
+
+        string GetMessageSubject(MessageModes mode, MailMessage originalMessage)
+        {
+            string prefix = string.Empty;
+
+            switch (mode)
+            {
+                case MessageModes.Reply:
+                case MessageModes.ReplyAll:
+                    {
+                        prefix = "RE:";
+                        break;
+                    }
+                case MessageModes.Forward:
+                    {
+                        prefix = "FW:";
+                        break;
+                    }
+            }
+
+            return originalMessage.Subject.ToLower().StartsWith(prefix.ToLower()) ? originalMessage.Subject : $"{prefix} {originalMessage.Subject}";
+        }
+
+        ObservableCollection<string> GetToEmails(MessageModes mode, MailMessage message) 
+        {
+            var toEmails = new ObservableCollection<string>();
+            switch (mode)
+            {
+                case MessageModes.Reply:
+                    {
+                        toEmails.Add(message.From);
+                        break;
+                    }
+                case MessageModes.ReplyAll:
+                    {
+                        //TODO : use user email
+                        toEmails.AddRange(message.To.Where( x => x != "changlee1009@naver.com"));
+                        toEmails.Add(message.From);
+                        break;
+                    }
+                case MessageModes.Forward:
+                    {
+                        break;
+                    }
+            }
+
+            return toEmails;
         }
     }
 }

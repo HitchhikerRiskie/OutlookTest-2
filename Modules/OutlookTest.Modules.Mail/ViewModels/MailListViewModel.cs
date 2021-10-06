@@ -73,9 +73,38 @@ namespace OutlookTest.Modules.Mail.ViewModels
                 return;
 
             var parameters = new DialogParameters();
-            parameters.Add("id", SelectedMessage.Id);
+            var viewName = "MessageView";
+            MessageModes replyType = MessageModes.Read;
 
-            _regionDialogService.Show("MessageView", parameters, (result) => 
+            switch (parameter) 
+            {
+                case nameof(MessageModes.Read):
+                    {
+                        viewName = "MessageReadOnlyView";
+                        replyType = MessageModes.Read;
+                        break;
+                    }
+                case nameof(MessageModes.Reply):
+                    {
+                        replyType = MessageModes.Reply;
+                        break;
+                    }
+                case nameof(MessageModes.ReplyAll):
+                    {
+                        replyType = MessageModes.ReplyAll;
+                        break;
+                    }
+                case nameof(MessageModes.Forward):
+                    {
+                        replyType = MessageModes.Forward;
+                        break;
+                    }
+            }
+
+            parameters.Add(MailParameters.MessageId, SelectedMessage.Id);
+            parameters.Add(MailParameters.MessageMode, replyType);
+
+            _regionDialogService.Show(viewName, parameters, (result) => 
             {
             });
         }

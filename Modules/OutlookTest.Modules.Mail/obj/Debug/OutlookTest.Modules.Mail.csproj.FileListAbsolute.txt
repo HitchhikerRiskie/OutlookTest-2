@@ -300,3 +300,7 @@ C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\OutlookTest.Module
 C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\OutlookTest.Modules.Mail.pdb
 C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Menus\MessageTab.g.cs
 C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Menus\MessageTab.baml
+C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Views\MessageReadOnlyView.g.cs
+C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Views\MessageReadOnlyView.baml
+C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Menus\MessageReadOnlyTab.g.cs
+C:\Gut\OutlookTest\Modules\OutlookTest.Modules.Mail\obj\Debug\Menus\MessageReadOnlyTab.baml
