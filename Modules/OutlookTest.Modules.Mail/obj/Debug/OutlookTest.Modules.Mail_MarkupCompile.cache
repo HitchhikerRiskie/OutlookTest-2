@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-7-653646639
+8331004409
 
-19-1120531621
+21-1869847613
 40-755177651
-Menus\HomeTab.xaml;Menus\MailGroup.xaml;Menus\MessageReadOnlyTab.xaml;Menus\MessageTab.xaml;Views\MailList.xaml;Views\MessageReadOnlyView.xaml;Views\MessageView.xaml;
+Controls\MessageDisplayControl.xaml;Menus\HomeTab.xaml;Menus\MailGroup.xaml;Menus\MessageReadOnlyTab.xaml;Menus\MessageTab.xaml;Views\MailList.xaml;Views\MessageReadOnlyView.xaml;Views\MessageView.xaml;
 
 False
 

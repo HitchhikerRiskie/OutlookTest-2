@@ -6,7 +6,7 @@
              Header="Home">
     <ig:RibbonGroup Caption="New">
         <ig:ButtonTool Caption="New Email" 
-                          Command="{Binding NewMessageCommand}" CommandParameter="new"
+                          Command="{Binding NewMessageCommand}" CommandParameter="New"
                           LargeImage="/OutlookTest.Modules.Mail;component/Images/NewMailMessage32.png" 
                           SmallImage="/OutlookTest.Modules.Mail;component/Images/NewMailMessage16.png" ig:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
     </ig:RibbonGroup>

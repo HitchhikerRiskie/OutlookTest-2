@@ -3,6 +3,7 @@
     public enum MessageModes
     {
         New,
+        Delete,
         Reply,
         ReplyAll,
         Forward,

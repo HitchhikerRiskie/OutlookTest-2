@@ -9,24 +9,15 @@ using System.Linq;
 
 namespace OutlookTest.Modules.Mail.ViewModels
 {
-    public class MailListViewModel : ViewModelBase
+    public class MailListViewModel : MessageViewModelBase
     {
         private ObservableCollection<MailMessage> _messages = new ObservableCollection<MailMessage>();
-        private readonly IMailService _mailService;
-        private readonly IRegionDialogService _regionDialogService;
         private string _currentFolder = FolderParameters.Inbox;
 
         public ObservableCollection<MailMessage> Messages
         {
             get { return _messages; }
             set { SetProperty(ref _messages, value); }
-        }
-
-        private MailMessage _selectedMessage;
-        public MailMessage SelectedMessage
-        {
-            get { return _selectedMessage; }
-            set { SetProperty(ref _selectedMessage, value); }
         }
 
         private DelegateCommand _newMessageCommand;
@@ -38,81 +29,38 @@ namespace OutlookTest.Modules.Mail.ViewModels
             var parameters = new DialogParameters();
             parameters.Add("id", 0);
 
-            _regionDialogService.Show("MessageView", parameters, (result) =>
+            RegionDialogService.Show("MessageView", parameters, (result) =>
             {
-                // if on sent folder, add to message collection
                 if (_currentFolder == FolderParameters.Sent)
                     Messages.Add(result.Parameters.GetValue<MailMessage>("messageSent"));
             });
         }
 
-        private DelegateCommand _deleteMessageCommand;
-        public DelegateCommand DeleteMessageCommand =>
-            _deleteMessageCommand ?? (_deleteMessageCommand = new DelegateCommand(ExecuteDeleteMessage));
-
-        void ExecuteDeleteMessage()
+        protected override void ExecuteDeleteMessage()
         {
-            if (SelectedMessage == null)
-                return ;
-
-            _mailService.DeleteMessage(SelectedMessage.Id);
-
-            Messages.Remove(SelectedMessage);
+            base.ExecuteDeleteMessage();
+            
+            Messages.Remove(Message);
         }
-
-        private DelegateCommand<string> _messageCommand;
-
-        public DelegateCommand<string> MessageCommand =>
-            _messageCommand ?? (_messageCommand = new DelegateCommand<string>(ExecuteMessageCommand));
 
         public string Title => "Testing";
 
-        void ExecuteMessageCommand(string parameter)
+        protected override void HandleMessageCallBack(IDialogResult result)
         {
-            if (SelectedMessage == null)
-                return;
-
-            var parameters = new DialogParameters();
-            var viewName = "MessageView";
-            MessageModes replyType = MessageModes.Read;
-
-            switch (parameter) 
+            base.HandleMessageCallBack(result);
+            var mode = result.Parameters.GetValue<MessageModes>(MailParameters.MessageMode);
+            if (mode == MessageModes.Delete) 
             {
-                case nameof(MessageModes.Read):
-                    {
-                        viewName = "MessageReadOnlyView";
-                        replyType = MessageModes.Read;
-                        break;
-                    }
-                case nameof(MessageModes.Reply):
-                    {
-                        replyType = MessageModes.Reply;
-                        break;
-                    }
-                case nameof(MessageModes.ReplyAll):
-                    {
-                        replyType = MessageModes.ReplyAll;
-                        break;
-                    }
-                case nameof(MessageModes.Forward):
-                    {
-                        replyType = MessageModes.Forward;
-                        break;
-                    }
+                var messageId = result.Parameters.GetValue<int>(MailParameters.MessageId);
+
+                var messageToDelete = Messages.Where(x => x.Id == messageId).FirstOrDefault();
+                if (messageToDelete != null)
+                    Messages.Remove(messageToDelete);
             }
-
-            parameters.Add(MailParameters.MessageId, SelectedMessage.Id);
-            parameters.Add(MailParameters.MessageMode, replyType);
-
-            _regionDialogService.Show(viewName, parameters, (result) => 
-            {
-            });
         }
 
-        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService)
+        public MailListViewModel(IMailService mailService, IRegionDialogService regionDialogService) : base (mailService, regionDialogService)
         {
-            _mailService = mailService;
-            _regionDialogService = regionDialogService;
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
@@ -121,7 +69,7 @@ namespace OutlookTest.Modules.Mail.ViewModels
 
             LoadMessage(_currentFolder);
 
-            SelectedMessage = Messages.FirstOrDefault();
+            Message = Messages.FirstOrDefault();
         }
 
         void LoadMessage(string folder)
@@ -130,17 +78,17 @@ namespace OutlookTest.Modules.Mail.ViewModels
             {
                 case FolderParameters.Inbox:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetInboxItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetInboxItems());
                         break;
                     }
                 case FolderParameters.Sent:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetSentItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetSentItems());
                         break;
                     }
                 case FolderParameters.Deleted:
                     {
-                        Messages = new ObservableCollection<MailMessage>(_mailService.GetDeletedItems());
+                        Messages = new ObservableCollection<MailMessage>(MailService.GetDeletedItems());
                         break;
                     }
                 default:

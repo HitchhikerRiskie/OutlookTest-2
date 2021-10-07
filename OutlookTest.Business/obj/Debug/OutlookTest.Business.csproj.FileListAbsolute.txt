@@ -17,4 +17,3 @@ C:\Gut\OutlookTest\OutlookTest.Business\obj\Debug\OutlookTest.Business.csproj.Co
 C:\Gut\OutlookTest\OutlookTest.Business\obj\Debug\OutlookTest.Business.csproj.CopyComplete
 C:\Gut\OutlookTest\OutlookTest.Business\obj\Debug\OutlookTest.Business.dll
 C:\Gut\OutlookTest\OutlookTest.Business\obj\Debug\OutlookTest.Business.pdb
-C:\Gut\OutlookTest\OutlookTest.Business\obj\Debug\OutlookTest.Business.csproj.AssemblyReference.cache
